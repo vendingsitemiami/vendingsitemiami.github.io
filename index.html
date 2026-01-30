@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test - Serhii</title>
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind custom config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: "#10b981" },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    .gradient-text {
+      background: linear-gradient(to right, #10b981, #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center">
+  <!-- Background blobs matching your style -->
+  <div aria-hidden="true" class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+    <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[40rem] -translate-x-1/2 rotate-30 bg-gradient-to-tr from-emerald-500 via-cyan-400 to-blue-500 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[70rem]"></div>
+  </div>
+
+  <div aria-hidden="true" class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
+    <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[40rem] -translate-x-1/2 bg-gradient-to-tr from-purple-500 via-emerald-400 to-cyan-500 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[70rem]"></div>
+  </div>
+
+  <!-- Centered Dialog Box (Always Open) -->
+  <div class="relative z-10 max-w-2xl w-full mx-4">
+    <div class="rounded-3xl bg-gray-800/80 backdrop-blur-sm px-8 py-16 text-center shadow-2xl ring-1 ring-white/10 sm:px-16">
+      <!-- Subtle gradient overlay -->
+      <div class="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-brand/20 via-transparent to-cyan-500/20"></div>
+      
+      <h1 class="text-5xl font-bold tracking-tight sm:text-6xl gradient-text mb-6">
+        Test
+      </h1>
+      
+      <p class="text-xl text-gray-300 leading-relaxed">
+        if you can read this, github connected to squarespace
+      </p>
+    </div>
+  </div>
+</body>
+</html>
