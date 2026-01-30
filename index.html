@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Test - Serhii</title>
+  <title>Test</title>
 
   <!-- TailwindCSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -27,29 +27,98 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+
+    .vending-pattern {
+      background-color: #ffffff;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310b981' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
   </style>
 </head>
 
-<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center">
-  <!-- Background blobs matching your style -->
-  <div aria-hidden="true" class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
-    <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[40rem] -translate-x-1/2 rotate-30 bg-gradient-to-tr from-emerald-500 via-cyan-400 to-blue-500 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[70rem]"></div>
-  </div>
-
-  <div aria-hidden="true" class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
-    <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[40rem] -translate-x-1/2 bg-gradient-to-tr from-purple-500 via-emerald-400 to-cyan-500 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[70rem]"></div>
-  </div>
-
-  <!-- Centered Dialog Box (Always Open) -->
-  <div class="relative z-10 max-w-2xl w-full mx-4">
-    <div class="rounded-3xl bg-gray-800/80 backdrop-blur-sm px-8 py-16 text-center shadow-2xl ring-1 ring-white/10 sm:px-16">
-      <!-- Subtle gradient overlay -->
-      <div class="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-brand/20 via-transparent to-cyan-500/20"></div>
+<body class="bg-white text-gray-900 min-h-screen flex items-center justify-center vending-pattern">
+  <!-- Centered Dialog Box -->
+  <div class="relative z-10 max-w-4xl w-full mx-4">
+    <div class="rounded-3xl bg-white p-12 sm:p-16 text-center shadow-2xl border-2 border-brand/20">
+      <!-- Vending Machine Icon -->
+      <div class="flex justify-center mb-8">
+        <svg viewBox="0 0 200 300" class="w-40 h-60" xmlns="http://www.w3.org/2000/svg">
+          <!-- Machine Body -->
+          <rect x="30" y="10" width="140" height="280" rx="10" fill="#f3f4f6" stroke="#10b981" stroke-width="3"/>
+          
+          <!-- Top Section -->
+          <rect x="40" y="20" width="120" height="25" rx="5" fill="#10b981"/>
+          <text x="100" y="36" font-family="Arial" font-size="12" font-weight="bold" fill="white" text-anchor="middle">TEST</text>
+          
+          <!-- Display Window -->
+          <rect x="45" y="55" width="110" height="170" rx="5" fill="white" stroke="#10b981" stroke-width="2"/>
+          
+          <!-- Product Shelves -->
+          <g id="products">
+            <!-- Row 1 -->
+            <rect x="50" y="65" width="25" height="25" rx="3" fill="#10b981" opacity="0.7"/>
+            <rect x="80" y="65" width="25" height="25" rx="3" fill="#34d399" opacity="0.7"/>
+            <rect x="110" y="65" width="25" height="25" rx="3" fill="#6ee7b7" opacity="0.7"/>
+            <rect x="140" y="65" width="10" height="25" rx="3" fill="#a7f3d0" opacity="0.7"/>
+            
+            <!-- Row 2 -->
+            <rect x="50" y="100" width="25" height="25" rx="3" fill="#10b981" opacity="0.7"/>
+            <rect x="80" y="100" width="25" height="25" rx="3" fill="#34d399" opacity="0.7"/>
+            <rect x="110" y="100" width="25" height="25" rx="3" fill="#6ee7b7" opacity="0.7"/>
+            <rect x="140" y="100" width="10" height="25" rx="3" fill="#a7f3d0" opacity="0.7"/>
+            
+            <!-- Row 3 -->
+            <rect x="50" y="135" width="25" height="25" rx="3" fill="#10b981" opacity="0.7"/>
+            <rect x="80" y="135" width="25" height="25" rx="3" fill="#34d399" opacity="0.7"/>
+            <rect x="110" y="135" width="25" height="25" rx="3" fill="#6ee7b7" opacity="0.7"/>
+            <rect x="140" y="135" width="10" height="25" rx="3" fill="#a7f3d0" opacity="0.7"/>
+            
+            <!-- Row 4 -->
+            <rect x="50" y="170" width="25" height="25" rx="3" fill="#10b981" opacity="0.7"/>
+            <rect x="80" y="170" width="25" height="25" rx="3" fill="#34d399" opacity="0.7"/>
+            <rect x="110" y="170" width="25" height="25" rx="3" fill="#6ee7b7" opacity="0.7"/>
+            <rect x="140" y="170" width="10" height="25" rx="3" fill="#a7f3d0" opacity="0.7"/>
+            
+            <!-- Row 5 -->
+            <rect x="50" y="205" width="25" height="15" rx="3" fill="#10b981" opacity="0.7"/>
+            <rect x="80" y="205" width="25" height="15" rx="3" fill="#34d399" opacity="0.7"/>
+            <rect x="110" y="205" width="25" height="15" rx="3" fill="#6ee7b7" opacity="0.7"/>
+            <rect x="140" y="205" width="10" height="15" rx="3" fill="#a7f3d0" opacity="0.7"/>
+          </g>
+          
+          <!-- Control Panel -->
+          <rect x="45" y="235" width="110" height="45" rx="5" fill="#f3f4f6"/>
+          
+          <!-- Keypad Buttons -->
+          <g id="keypad">
+            <circle cx="65" cy="250" r="5" fill="#10b981"/>
+            <circle cx="85" cy="250" r="5" fill="#10b981"/>
+            <circle cx="105" cy="250" r="5" fill="#10b981"/>
+            <circle cx="125" cy="250" r="5" fill="#10b981"/>
+            <circle cx="145" cy="250" r="5" fill="#10b981"/>
+            
+            <circle cx="65" cy="268" r="5" fill="#10b981"/>
+            <circle cx="85" cy="268" r="5" fill="#10b981"/>
+            <circle cx="105" cy="268" r="5" fill="#10b981"/>
+            <circle cx="125" cy="268" r="5" fill="#10b981"/>
+            <circle cx="145" cy="268" r="5" fill="#ef4444"/>
+          </g>
+        </svg>
+      </div>
       
       <h1 class="text-5xl font-bold tracking-tight sm:text-6xl gradient-text mb-6">
-        Miami Vending Services
+        Test
       </h1>
       
+      <p class="text-2xl text-gray-700 leading-relaxed max-w-2xl mx-auto">
+        if you can read this, github connected to squarespace
+      </p>
+
+      <!-- Optional: Decorative elements -->
+      <div class="mt-12 flex justify-center gap-4">
+        <div class="w-3 h-3 rounded-full bg-brand animate-pulse"></div>
+        <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse" style="animation-delay: 0.2s;"></div>
+        <div class="w-3 h-3 rounded-full bg-emerald-300 animate-pulse" style="animation-delay: 0.4s;"></div>
+      </div>
     </div>
   </div>
 </body>
