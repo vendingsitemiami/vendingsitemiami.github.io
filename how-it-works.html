@@ -26,7 +26,42 @@
       ← Back
     </a>
   </div>
+  <hr>
 
+<section class="px-6 md:px-20 py-20 bg-white">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8">
+      Our Machines
+    </h2>
+
+    <div class="relative">
+      <img
+        id="galleryImage"
+        src="machine1.png"
+        class="w-full max-h-[400px] object-contain rounded-lg mx-auto"
+        alt="Vending Machine"
+      >
+
+      <div class="flex justify-between mt-6">
+        <button
+          id="prevBtn"
+          class="px-6 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition font-semibold"
+        >
+          ← Back
+        </button>
+
+        <button
+          id="nextBtn"
+          class="px-6 py-2 bg-button text-white rounded-lg hover:bg-blue-700 transition font-semibold"
+        >
+          Next →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
   <section class="px-6 md:px-20 py-20 bg-white">
     <div class="max-w-4xl mx-auto text-center">
       <h1 class="text-3xl md:text-5xl font-bold text-gray-800 mb-10">
@@ -78,5 +113,20 @@
     </div>
   </footer>
 
+<script>
+  const images = ["machine1.png", "machine2.png", "machine3.png"]
+  let index = 0
+
+  const img = document.getElementById("galleryImage")
+  document.getElementById("nextBtn").onclick = () => {
+    index = (index + 1) % images.length
+    img.src = images[index]
+  }
+  document.getElementById("prevBtn").onclick = () => {
+    index = (index - 1 + images.length) % images.length
+    img.src = images[index]
+  }
+</script>
+  
 </body>
 </html>
