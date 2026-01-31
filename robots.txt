@@ -1,2 +1,5 @@
 User-agent: *
+Disallow: /machine.png
 Disallow: /404.html
+Disallow: CNAME
+Disallow: README.md
