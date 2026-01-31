@@ -7,32 +7,65 @@
   <meta name="description" content="Request free vending machines for your business in Miami. Fast setup, no cost, and full service support.">
   <meta name="keywords" content="Miami vending machines, free vending machines, vending services Miami, office vending">
   <meta name="author" content="Miami Service Amenities">
-  <!--Google Verification is set to auto, no need for verification string.-->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        button: '#2563eb',
+      theme: {
+        extend: {
+          colors: {
+            button: '#2563eb',
+          },
+        },
       },
-    },
-  },
-};
+    };
   </script>
 </head>
 <body class="bg-white font-sans">
 
-  <!-- Hero Section -->
+  <nav class="sticky top-0 z-50 bg-white border-b">
+    <div class="max-w-7xl mx-auto px-6 md:px-20">
+      <div class="flex items-center justify-between h-16">
+        <div class="text-xl font-bold text-gray-800">
+          Miami Service Amenities
+        </div>
+
+        <div class="hidden md:flex space-x-8 items-center">
+          <a href="#info" class="text-gray-600 hover:text-gray-900">Info</a>
+          <a href="#faq" class="text-gray-600 hover:text-gray-900">FAQ</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlmOoVvZ3l6DfNPr_xCDBW4ledljcTfiEeZ-qRuFsvo5aKSQ/viewform?usp=dialog"
+             class="bg-button text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+            Request a Machine
+          </a>
+        </div>
+
+        <button id="menuBtn" class="md:hidden text-gray-700 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden md:hidden border-t bg-white">
+      <div class="px-6 py-4 space-y-4">
+        <a href="#info" class="block text-gray-600">Info</a>
+        <a href="#faq" class="block text-gray-600">FAQ</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlmOoVvZ3l6DfNPr_xCDBW4ledljcTfiEeZ-qRuFsvo5aKSQ/viewform?usp=dialog"
+           class="block bg-button text-white text-center px-4 py-2 rounded-lg">
+          Request a Machine
+        </a>
+      </div>
+    </div>
+  </nav>
+
   <section class="flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-16 md:py-20 bg-white">
-    <!-- Image Left -->
     <div class="md:w-1/2 mb-10 ml-0 md:-ml-8 md:mb-0">
-      <img src="./machine.png" 
-           alt="Vending Machine" 
+      <img src="./machine.png"
+           alt="Vending Machine"
            class="w-full max-w-md mx-auto md:max-w-none md:mx-0">
     </div>
 
-    <!-- Text Right -->
     <div class="md:w-1/2 text-center md:text-left ml-0 md:-ml-6">
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-6">
         Miami Vending Machines - Service Amenities
@@ -40,7 +73,7 @@
       <p class="text-gray-600 mb-8">
         Get access to free vending machines for your business or community. Easy setup and hassle-free maintenance.
       </p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlmOoVvZ3l6DfNPr_xCDBW4ledljcTfiEeZ-qRuFsvo5aKSQ/viewform?usp=dialog" 
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlmOoVvZ3l6DfNPr_xCDBW4ledljcTfiEeZ-qRuFsvo5aKSQ/viewform?usp=dialog"
          class="inline-block bg-button text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition no-underline">
         Request free vending machine
       </a>
@@ -52,7 +85,6 @@
 
   <hr>
 
-  <!-- Other Info Section -->
   <section id="info" class="px-6 md:px-20 py-16 bg-white">
     <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
       <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
@@ -72,7 +104,6 @@
 
   <hr>
 
-  <!-- FAQ Section -->
   <section id="faq" class="px-6 md:px-20 py-16 bg-white">
     <div class="max-w-5xl mx-auto">
       <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-10 text-center">
@@ -85,7 +116,7 @@
             How do I request a vending machine?
           </h3>
           <p class="text-gray-600">
-            Click the "Request free vending machine" button at the top of the page and fill out the form. You can also call us directly at (512) 640-9970.
+            Click the button at the top of the page and fill out the form, or call (512) 640-9970.
           </p>
         </div>
 
@@ -94,7 +125,7 @@
             Is there any cost involved?
           </h3>
           <p class="text-gray-600">
-            No, all vending machines are provided completely free of charge. There are no hidden fees or setup costs.
+            No, all vending machines are provided completely free of charge.
           </p>
         </div>
 
@@ -103,7 +134,7 @@
             How quickly can you install a machine?
           </h3>
           <p class="text-gray-600">
-            Most installations are completed within a few days, depending on location and availability.
+            Most installations are completed within a few days.
           </p>
         </div>
 
@@ -112,19 +143,18 @@
             Do you provide maintenance?
           </h3>
           <p class="text-gray-600">
-            Yes, we handle all maintenance and restocking for our vending machines to ensure they are always operational.
+            Yes, we handle all maintenance and restocking.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="bg-gray-50 text-black px-6 md:px-20 py-12">
     <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
       <div>
         <h3 class="text-lg font-bold mb-4">Miami Vending Machines</h3>
-        <p>Providing free vending machines for businesses and communities across Miami. Easy setup and full support.</p>
+        <p>Providing free vending machines across Miami.</p>
       </div>
 
       <div>
@@ -136,7 +166,6 @@
       <div>
         <h3 class="text-lg font-bold mb-4">Quick Links</h3>
         <ul class="space-y-1">
-          <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdlmOoVvZ3l6DfNPr_xCDBW4ledljcTfiEeZ-qRuFsvo5aKSQ/viewform?usp=dialog">Request a Machine</a></li>
           <li><a href="#info">Info</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
@@ -147,6 +176,12 @@
       &copy; 2026 Miami Service Amenities. All rights reserved.
     </div>
   </footer>
+
+  <script>
+    const btn = document.getElementById('menuBtn')
+    const menu = document.getElementById('mobileMenu')
+    btn.onclick = () => menu.classList.toggle('hidden')
+  </script>
 
 </body>
 </html>
