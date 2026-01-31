@@ -9,6 +9,17 @@
   <meta name="author" content="Miami Service Amenities">
   <!--Google Verification is set to auto, no need for verification string.-->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        button: '#2563eb',
+      },
+    },
+  },
+};
+  </script>
 </head>
 <body class="bg-white font-sans">
 
@@ -30,7 +41,7 @@
         Get access to free vending machines for your business or community. Easy setup and hassle-free maintenance.
       </p>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlmOoVvZ3l6DfNPr_xCDBW4ledljcTfiEeZ-qRuFsvo5aKSQ/viewform?usp=dialog" 
-         class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition no-underline">
+         class="inline-block bg-button text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition no-underline">
         Request free vending machine
       </a>
       <p class="text-gray-600 mt-3">
@@ -69,7 +80,7 @@
       </h2>
 
       <div class="space-y-6">
-        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+        <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
           <h3 class="text-lg md:text-xl font-semibold mb-2">
             How do I request a vending machine?
           </h3>
@@ -78,7 +89,7 @@
           </p>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+        <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
           <h3 class="text-lg md:text-xl font-semibold mb-2">
             Is there any cost involved?
           </h3>
@@ -87,7 +98,7 @@
           </p>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+        <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
           <h3 class="text-lg md:text-xl font-semibold mb-2">
             How quickly can you install a machine?
           </h3>
@@ -96,7 +107,7 @@
           </p>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+        <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
           <h3 class="text-lg md:text-xl font-semibold mb-2">
             Do you provide maintenance?
           </h3>
