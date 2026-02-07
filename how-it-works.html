@@ -18,9 +18,7 @@
     };
   </script>
 </head>
-<body class="bg-white font-sans" data-barba="wrapper">
-
-  <main data-barba="container" data-barba-namespace="how-it-works">
+<body class="bg-white font-sans">
 
   <div class="max-w-7xl mx-auto px-6 md:px-20 py-6">
     <a href="/"
@@ -112,30 +110,6 @@
       &copy; 2026 Miami Service Amenities. All rights reserved.
     </div>
   </footer>
-
-  </main>
-
-  <script src="https://unpkg.com/@barba/core"></script>
-  <script>
-    barba.init({
-      transitions: [{
-        leave({ current }) {
-          return current.container.animate(
-            [{ opacity: 1, transform: 'translateY(0)' },
-             { opacity: 0, transform: 'translateY(-8px)' }],
-            { duration: 250, easing: 'ease-in' }
-          ).finished
-        },
-        enter({ next }) {
-          next.container.animate(
-            [{ opacity: 0, transform: 'translateY(8px)' },
-             { opacity: 1, transform: 'translateY(0)' }],
-            { duration: 350, easing: 'ease-out' }
-          )
-        }
-      }]
-    })
-  </script>
 
 <script>
   const images = ["machine1.png", "machine2.png", "machine3.png"]
