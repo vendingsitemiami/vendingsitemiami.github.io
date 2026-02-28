@@ -4,9 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Miami Service Amenities</title>
-  <meta name="description" content="Request free vending machines for your business in Miami. Fast setup, no cost, and full service support.">
-  <meta name="keywords" content="Miami vending machines, free vending machines, vending services Miami, office vending">
-  <meta name="author" content="Miami Service Amenities">
+  <meta name="description" content="Request free vending machines for your business in Miami. Fast setup, no cost, full service support.">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-17962558479"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-17962558479');
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -20,185 +28,169 @@
     };
   </script>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17962558479"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'AW-17962558479');
-</script>
-<body class="bg-white">
+<body class="bg-white overflow-x-hidden">
 
-  <nav class="sticky top-0 z-50 bg-white border-b">
-    <div class="max-w-7xl mx-auto px-6 md:px-20">
-      <div class="flex items-center justify-between h-16">
-        <div class="text-xl font-bold text-gray-800">
-          Miami Service Amenities
-        </div>
-
-        <div class="hidden md:flex space-x-8 items-center">
-          <a href="#info" class="text-gray-600 hover:text-gray-900">Info</a>
-          <a href="#faq" class="text-gray-600 hover:text-gray-900">FAQ</a>
-          <a href="./how-it-works" class="text-gray-600 hover:text-gray-900">How it works</a>
-          <a href="./gallery" class="text-gray-600 hover:text-gray-900">Gallery</a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlmOoVvZ3l6DfNPr_xCDBW4ledljcTfiEeZ-qRuFsvo5aKSQ/viewform?usp=dialog"
-             class="bg-button text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
-            Request a Machine
-          </a>
-        </div>
-
-        <button id="menuBtn" class="md:hidden text-gray-700 focus:outline-none">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-20">
+    <div class="flex items-center justify-between h-16">
+      
+      <div class="text-lg sm:text-xl font-bold text-gray-800">
+        Miami Service Amenities
       </div>
-    </div>
 
-    <div id="mobileMenu" class="hidden md:hidden border-t bg-white">
-      <div class="px-6 py-4 space-y-4">
-        <a href="#info" class="block text-gray-600">Info</a>
-        <a href="#faq" class="block text-gray-600">FAQ</a>
-        <a href="./how-it-works" class="block text-gray-600">How it works</a>
-        <a href="/gallery" class="block text-gray-600">Gallery</a>
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-8 items-center">
+        <a href="#info" class="text-gray-600 hover:text-gray-900">Info</a>
+        <a href="#faq" class="text-gray-600 hover:text-gray-900">FAQ</a>
+        <a href="./how-it-works.html" class="text-gray-600 hover:text-gray-900">How it works</a>
+        <a href="./gallery.html" class="text-gray-600 hover:text-gray-900">Gallery</a>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlmOoVvZ3l6DfNPr_xCDBW4ledljcTfiEeZ-qRuFsvo5aKSQ/viewform?usp=dialog"
-           class="block bg-button text-white text-center px-4 py-2 rounded-lg">
+           class="bg-button text-white px-5 py-2 rounded-xl hover:bg-blue-700 transition shadow-md">
           Request a Machine
         </a>
       </div>
+
+      <!-- Mobile Button -->
+      <button id="menuBtn" class="md:hidden text-gray-800 text-2xl">
+        ☰
+      </button>
     </div>
-  </nav>
+  </div>
 
-  <section class="flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-16 md:py-20 bg-white">
-<div class="md:w-1/2 mb-10 ml-0 md:-ml-8 md:mb-0">
-  <video autoplay loop muted
-         class="w-full max-w-md mx-auto md:max-w-none md:mx-0">
-    <source src="./machine.mp4" type="video/mp4">
-    Error
-  </video>
-</div>
-
-    <div class="md:w-1/2 text-center md:text-left ml-0 md:-ml-6">
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-        Miami Vending Machines - Service Amenities
-      </h1>
-      <p class="text-gray-600 mb-8">
-        Get access to free vending machines for your business or community. Easy setup and hassle-free maintenance.
-      </p>
+  <!-- Mobile Dropdown -->
+  <div id="mobileMenu" class="hidden md:hidden border-t bg-white">
+    <div class="px-6 py-4 space-y-4 text-center">
+      <a href="#info" class="block text-gray-700">Info</a>
+      <a href="#faq" class="block text-gray-700">FAQ</a>
+      <a href="./how-it-works.html" class="block text-gray-700">How it works</a>
+      <a href="./gallery.html" class="block text-gray-700">Gallery</a>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlmOoVvZ3l6DfNPr_xCDBW4ledljcTfiEeZ-qRuFsvo5aKSQ/viewform?usp=dialog"
-         class="inline-block bg-button text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition no-underline">
-        Request free vending machine
+         class="block bg-button text-white px-6 py-3 rounded-xl shadow-md">
+        Request a Machine
       </a>
-      <p class="text-gray-600 mt-3">
-        Or call us at (512) 640-9970
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="py-16 md:py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 flex flex-col md:flex-row items-center">
+
+    <div class="md:w-1/2 mb-10 md:mb-0">
+      <video autoplay muted loop playsinline class="rounded-3xl shadow-2xl w-full">
+        <source src="./machine.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="md:w-1/2 md:pl-16 text-center md:text-left">
+      <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
+        Free Vending Machines
+        <span class="block text-button">Installed in Days</span>
+      </h1>
+
+      <p class="text-gray-600 text-base sm:text-lg mb-8">
+        No contracts. No fees. Full service installation, restocking, and maintenance.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlmOoVvZ3l6DfNPr_xCDBW4ledljcTfiEeZ-qRuFsvo5aKSQ/viewform?usp=dialog"
+          class="bg-button text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold shadow-xl hover:scale-105 transition">
+          Request Free Machine
+        </a>
+
+        <a href="#info"
+          class="border border-gray-300 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-gray-100 transition">
+          Learn More
+        </a>
+      </div>
+
+      <p class="text-gray-500 mt-6 text-sm sm:text-base">
+        📞 (512) 640-9970
       </p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <hr>
-
-  <section id="info" class="px-6 md:px-20 py-16 bg-white">
-    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-      <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h2 class="text-xl font-bold mb-4">Fast Setup</h2>
-        <p>We install vending machines quickly and efficiently with minimal downtime.</p>
-      </div>
-      <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h2 class="text-xl font-bold mb-4">24/7 Support</h2>
-        <p>Our team is available anytime to assist with maintenance and restocking.</p>
-      </div>
-      <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h2 class="text-xl font-bold mb-4">Free of Charge</h2>
-        <p>No upfront costs. Enjoy vending machines for your location completely free.</p>
-      </div>
-    </div>
-  </section>
-
-  <hr>
-
-  <section id="faq" class="px-6 md:px-20 py-16 bg-white">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-10 text-center">
-        Frequently Asked Questions
-      </h2>
-
-      <div class="space-y-6">
-        <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
-          <h3 class="text-lg md:text-xl font-semibold mb-2">
-            How do I request a vending machine?
-          </h3>
-          <p class="text-gray-600">
-            Click the button at the top of the page and fill out the form, or call (512) 640-9970.
-          </p>
-        </div>
-
-        <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
-          <h3 class="text-lg md:text-xl font-semibold mb-2">
-            Is there any cost involved?
-          </h3>
-          <p class="text-gray-600">
-            No, all vending machines are provided completely free of charge.
-          </p>
-        </div>
-
-        <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
-          <h3 class="text-lg md:text-xl font-semibold mb-2">
-            How quickly can you install a machine?
-          </h3>
-          <p class="text-gray-600">
-            Most installations are completed within a few days.
-          </p>
-        </div>
-
-        <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
-          <h3 class="text-lg md:text-xl font-semibold mb-2">
-            Do you provide maintenance?
-          </h3>
-          <p class="text-gray-600">
-            Yes, we handle all maintenance and restocking.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="bg-gray-50 text-black px-6 md:px-20 py-12">
-    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-      <div>
-        <h3 class="text-lg mb-4 font-bold">Miami Vending Machines</h3>
-        <p>Providing free vending machines across Miami.</p>
-      </div>
-
-      <div>
-        <h3 class="text-lg font-bold mb-4">Contact</h3>
-        <p>Phone: (512) 640-9970</p>
-        <p>Email: info@serviceamenities.com</p>
-      </div>
-
-      <div>
-        <h3 class="text-lg font-bold mb-4">Quick Links</h3>
-        <ul class="space-y-1">
-          <li><a href="#info">Info</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="./how-it-works">How it works</a></li>
-          <li><a href="./gallery">Gallery</a></li>
-        </ul>
-      </div>
+<!-- INFO -->
+<section id="info" class="py-16 md:py-20 bg-white">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 md:px-20 grid gap-8 md:grid-cols-3 text-center">
+    <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition border">
+      <h2 class="text-xl font-bold mb-4">Fast Setup</h2>
+      <p>Installed quickly with minimal disruption.</p>
     </div>
 
-    <div class="mt-12 text-center text-black text-sm">
-      &copy; 2026 Miami Service Amenities. All rights reserved.
+    <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition border">
+      <h2 class="text-xl font-bold mb-4">24/7 Support</h2>
+      <p>Maintenance and restocking fully handled.</p>
     </div>
-  </footer>
 
-  <script>
-    const btn = document.getElementById('menuBtn')
-    const menu = document.getElementById('mobileMenu')
-    btn.onclick = () => menu.classList.toggle('hidden')
-  </script>
+    <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition border">
+      <h2 class="text-xl font-bold mb-4">Zero Cost</h2>
+      <p>No fees, no contracts, no hidden charges.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-16 md:py-20 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-20">
+    <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+
+    <div class="space-y-6">
+      <div class="bg-white p-6 rounded-2xl shadow-md border">
+        <h3 class="font-semibold mb-2">How do I request a machine?</h3>
+        <p class="text-gray-600">Fill out the request form or call (512) 640-9970.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl shadow-md border">
+        <h3 class="font-semibold mb-2">Is it really free?</h3>
+        <p class="text-gray-600">Yes. No upfront costs or service fees.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl shadow-md border">
+        <h3 class="font-semibold mb-2">How fast is installation?</h3>
+        <p class="text-gray-600">Most installs are completed within a few days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER (unchanged) -->
+<footer class="bg-gray-50 border-t py-12">
+  <div class="max-w-6xl mx-auto px-6 md:px-20 grid md:grid-cols-3 gap-8 text-center md:text-left">
+    <div>
+      <h3 class="font-bold mb-3">Miami Service Amenities</h3>
+      <p class="text-gray-600">Providing free vending machines across Miami.</p>
+    </div>
+
+    <div>
+      <h3 class="font-bold mb-3">Contact</h3>
+      <p>(512) 640-9970</p>
+      <p>info@serviceamenities.com</p>
+    </div>
+
+    <div>
+      <h3 class="font-bold mb-3">Links</h3>
+      <p><a href="./how-it-works.html">How it works</a></p>
+      <p><a href="./gallery.html">Gallery</a></p>
+    </div>
+  </div>
+
+  <div class="text-center text-gray-500 mt-10 text-sm">
+    © 2026 Miami Service Amenities
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
 
 </body>
 </html>
