@@ -3,60 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 — Page Not Found</title>
-
+  <title>404 — Page Not Found | Miami Service Amenities</title>
+  <script>
+    if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            button: '#2563eb',
-          },
-        },
-      },
+      darkMode: 'class',
+      theme: { extend: { colors: { button: '#2563eb' } } }
     };
   </script>
+  <style>
+    body { font-family: system-ui, sans-serif; }
+    .dark-toggle { transition: background 0.2s, transform 0.2s; }
+    .dark-toggle:hover { transform: scale(1.08); }
+  </style>
 </head>
 
-<body class="bg-white min-h-screen flex items-center justify-center px-6 overflow-x-hidden relative">
+<body class="bg-white dark:bg-gray-950 min-h-screen overflow-x-hidden transition-colors duration-300">
 
-  <!-- subtle background blobs -->
-  <div class="absolute top-0 -left-20 w-72 h-72 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
-  <div class="absolute bottom-0 -right-20 w-72 h-72 bg-indigo-100 rounded-full blur-3xl opacity-50"></div>
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-white/90 dark:bg-gray-950/90 backdrop-blur border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
+    <div class="flex items-center justify-between h-16 gap-4">
+      <div class="text-sm sm:text-base lg:text-lg font-bold text-gray-800 dark:text-white truncate shrink-0">
+        Miami Service Amenities
+      </div>
+      <div class="hidden md:flex items-center gap-5 lg:gap-8 shrink-0">
+        <a href="./index.html#info" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">Info</a>
+        <a href="./index.html#faq" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">FAQ</a>
+        <a href="./how-it-works.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">How it works</a>
+        <a href="./gallery.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">Gallery</a>
+        <button id="darkToggleDesktop" class="dark-toggle p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Toggle dark mode">
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+        </button>
+        <a href="./form.html" class="flex items-center gap-2 bg-button text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition shadow-md text-sm font-medium whitespace-nowrap">
+          <i data-lucide="package" class="w-4 h-4 shrink-0"></i>
+          Request a Machine
+        </a>
+      </div>
+      <div class="flex md:hidden items-center gap-2 shrink-0">
+        <button id="darkToggleMobile" class="dark-toggle p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300" aria-label="Toggle dark mode">
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+        </button>
+        <button id="menuBtn" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white" aria-label="Toggle menu">
+          <i data-lucide="menu" class="w-5 h-5 block" id="menuIcon"></i>
+          <i data-lucide="x" class="w-5 h-5 hidden" id="closeIcon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
+    <div class="px-6 py-5 space-y-3 text-center">
+      <a href="./index.html#info" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">Info</a>
+      <a href="./index.html#faq" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">FAQ</a>
+      <a href="./how-it-works.html" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">How it works</a>
+      <a href="./gallery.html" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">Gallery</a>
+      <a href="./form.html" class="flex items-center justify-center gap-2 bg-button text-white px-6 py-3 rounded-xl shadow-md font-medium text-sm mt-2">
+        <i data-lucide="package" class="w-4 h-4"></i>
+        Request a Machine
+      </a>
+    </div>
+  </div>
+</nav>
 
-  <div class="relative max-w-xl w-full text-center bg-white p-10 sm:p-14 rounded-3xl shadow-2xl border">
+<!-- 404 CONTENT -->
+<div class="flex items-center justify-center min-h-[calc(100vh-64px)] px-4 py-16 relative overflow-hidden">
+  <div class="absolute top-0 -left-20 w-72 h-72 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-3xl opacity-50"></div>
+  <div class="absolute bottom-0 -right-20 w-72 h-72 bg-indigo-100 dark:bg-indigo-900/20 rounded-full blur-3xl opacity-50"></div>
 
-    <div class="text-6xl sm:text-7xl font-extrabold text-button mb-6">
-      404
+  <div class="relative max-w-md w-full text-center bg-white dark:bg-gray-900 p-10 sm:p-14 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-800">
+    <div class="flex justify-center mb-6 text-blue-600 dark:text-blue-400">
+      <i data-lucide="file-x" class="w-14 h-14"></i>
     </div>
 
-    <h1 class="text-2xl font-bold text-gray-900 mb-4">
-      Page Not Found
-    </h1>
+    <div class="text-6xl sm:text-7xl font-extrabold text-button mb-4" style="font-family:'Syne',sans-serif;">404</div>
 
-    <p class="text-gray-600 mb-10">
-      The page you’re looking for may have been moved, renamed, or no longer exists.
-      You can return home or request a vending machine below.
+    <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Page Not Found</h1>
+
+    <p class="text-gray-500 dark:text-gray-400 text-sm sm:text-base mb-10">
+      The page you're looking for may have been moved, renamed, or no longer exists. Return home or request a vending machine below.
     </p>
 
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="/"
-         class="bg-button text-white px-8 py-4 rounded-xl font-semibold shadow-xl hover:scale-105 transition">
+      <a href="/" class="flex items-center justify-center gap-2 bg-button text-white px-7 py-3.5 rounded-xl font-semibold shadow-lg hover:bg-blue-700 transition-all duration-200 text-sm">
+        <i data-lucide="house" class="w-4 h-4 shrink-0"></i>
         Go Home
       </a>
-
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlmOoVvZ3l6DfNPr_xCDBW4ledljcTfiEeZ-qRuFsvo5aKSQ/viewform?usp=dialog"
-         class="border border-gray-300 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition">
+      <a href="./form.html" class="flex items-center justify-center gap-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 px-7 py-3.5 rounded-xl font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition text-sm">
+        <i data-lucide="package" class="w-4 h-4 shrink-0"></i>
         Request a Machine
       </a>
     </div>
 
-    <p class="text-gray-500 mt-12 text-sm">
-      © 2026 Miami Service Amenities
-    </p>
-
+    <p class="text-gray-400 dark:text-gray-600 mt-10 text-xs">© 2026 Miami Service Amenities</p>
   </div>
+</div>
 
+<script>
+  lucide.createIcons();
+  const html = document.documentElement;
+
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuIcon = document.getElementById('menuIcon');
+  const closeIcon = document.getElementById('closeIcon');
+  menuBtn.addEventListener('click', () => {
+    const isHidden = mobileMenu.classList.toggle('hidden');
+    menuIcon.classList.toggle('hidden', !isHidden);
+    closeIcon.classList.toggle('hidden', isHidden);
+  });
+
+  function toggleDark() {
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    lucide.createIcons();
+  }
+  document.getElementById('darkToggleDesktop').addEventListener('click', toggleDark);
+  document.getElementById('darkToggleMobile').addEventListener('click', toggleDark);
+</script>
 </body>
 </html>

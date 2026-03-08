@@ -3,47 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Request a Free Machine - Service Amenities</title>
+  <title>Request a Free Machine - Miami Service Amenities</title>
   <meta name="description" content="Request free vending machines for your business in Miami. Fast setup, no cost, full service support.">
-
+  <script>
+    if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            button: '#2563eb',
-          },
-        },
-      },
+      darkMode: 'class',
+      theme: { extend: { colors: { button: '#2563eb' } } }
     };
   </script>
+  <style>
+    body { font-family: system-ui, sans-serif; }
+    .dark-toggle { transition: background 0.2s, transform 0.2s; }
+    .dark-toggle:hover { transform: scale(1.08); }
+  </style>
 </head>
-<body class="bg-gray-50 font-sans">
 
-<!-- HERO / FORM HEADER -->
-<section class="py-20">
-  <div class="max-w-4xl mx-auto px-4 text-center">
-    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6">
+<body class="bg-gray-50 dark:bg-gray-950 overflow-x-hidden transition-colors duration-300">
+
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-white/90 dark:bg-gray-950/90 backdrop-blur border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
+    <div class="flex items-center justify-between h-16 gap-4">
+      <div class="text-sm sm:text-base lg:text-lg font-bold text-gray-800 dark:text-white truncate shrink-0">
+        Miami Service Amenities
+      </div>
+      <div class="hidden md:flex items-center gap-5 lg:gap-8 shrink-0">
+        <a href="./index.html#info" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">Info</a>
+        <a href="./index.html#faq" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">FAQ</a>
+        <a href="./how-it-works.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">How it works</a>
+        <a href="./gallery.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">Gallery</a>
+        <button id="darkToggleDesktop" class="dark-toggle p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Toggle dark mode">
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+        </button>
+        <a href="./form.html" class="flex items-center gap-2 bg-button text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition shadow-md text-sm font-medium whitespace-nowrap">
+          <i data-lucide="package" class="w-4 h-4 shrink-0"></i>
+          Request a Machine
+        </a>
+      </div>
+      <div class="flex md:hidden items-center gap-2 shrink-0">
+        <button id="darkToggleMobile" class="dark-toggle p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300" aria-label="Toggle dark mode">
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+        </button>
+        <button id="menuBtn" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white" aria-label="Toggle menu">
+          <i data-lucide="menu" class="w-5 h-5 block" id="menuIcon"></i>
+          <i data-lucide="x" class="w-5 h-5 hidden" id="closeIcon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
+    <div class="px-6 py-5 space-y-3 text-center">
+      <a href="./index.html#info" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">Info</a>
+      <a href="./index.html#faq" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">FAQ</a>
+      <a href="./how-it-works.html" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">How it works</a>
+      <a href="./gallery.html" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">Gallery</a>
+      <a href="./form.html" class="flex items-center justify-center gap-2 bg-button text-white px-6 py-3 rounded-xl shadow-md font-medium text-sm mt-2">
+        <i data-lucide="package" class="w-4 h-4"></i>
+        Request a Machine
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- FORM HEADER -->
+<section class="py-16 md:py-20">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4" style="font-family:'Syne',sans-serif;">
       Request Your Free Vending Machine
     </h1>
-    <p class="text-gray-600 text-lg sm:text-xl mb-8">
+    <p class="text-gray-500 dark:text-gray-400 text-base sm:text-lg mb-10 max-w-xl mx-auto">
       Fill out the form below and our team will contact you for a fast, free setup.
     </p>
 
-    <!-- Back Button -->
-    <div class="flex justify-center mb-12">
-      <a href="./index.html"
-         class="bg-button text-white px-6 py-3 rounded-xl font-semibold shadow-md hover:bg-blue-700 transition">
-        ← Back
-      </a>
+    <div class="flex flex-wrap items-center justify-center gap-6 mb-12 text-sm text-gray-500 dark:text-gray-400">
+      <span class="flex items-center gap-2">
+        <i data-lucide="zap" class="w-4 h-4 text-blue-500"></i>Fast setup
+      </span>
+      <span class="flex items-center gap-2">
+        <i data-lucide="circle-dollar-sign" class="w-4 h-4 text-blue-500"></i>No cost
+      </span>
+      <span class="flex items-center gap-2">
+        <i data-lucide="headphones" class="w-4 h-4 text-blue-500"></i>Full support
+      </span>
     </div>
 
-    <!-- Google Form Embed -->
     <div class="flex justify-center">
       <iframe
         src="https://docs.google.com/forms/d/e/1FAIpQLSdlmOoVvZ3l6DfNPr_xCDBW4ledljcTfiEeZ-qRuFsvo5aKSQ/viewform?embedded=true"
-        class="w-full max-w-3xl min-h-[800px] md:min-h-[1300px] rounded-2xl shadow-xl border border-gray-200 overflow-hidden"
+        class="w-full max-w-3xl min-h-[800px] md:min-h-[1300px] rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white"
         frameborder="0" marginheight="0" marginwidth="0">
         Loading…
       </iframe>
@@ -52,11 +108,51 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-gray-50 border-t py-12 mt-20">
-  <div class="max-w-6xl mx-auto px-6 md:px-20 text-center text-gray-500 text-sm">
-    © 2026 Service Amenities
+<footer class="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12 mt-10">
+  <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-20 grid sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
+    <div>
+      <h3 class="font-bold mb-3 text-gray-900 dark:text-white">Miami Service Amenities</h3>
+      <p class="text-gray-500 dark:text-gray-400 text-sm">Providing free vending machines across Miami.</p>
+    </div>
+    <div>
+      <h3 class="font-bold mb-3 text-gray-900 dark:text-white">Contact</h3>
+      <p class="flex items-center justify-center sm:justify-start gap-2 text-gray-500 dark:text-gray-400 text-sm mb-1">
+        <i data-lucide="phone" class="w-3.5 h-3.5 shrink-0"></i>(305) 615-0817
+      </p>
+      <p class="flex items-center justify-center sm:justify-start gap-2 text-gray-500 dark:text-gray-400 text-sm">
+        <i data-lucide="mail" class="w-3.5 h-3.5 shrink-0"></i>info@serviceamenities.com
+      </p>
+    </div>
+    <div class="sm:col-span-2 md:col-span-1">
+      <h3 class="font-bold mb-3 text-gray-900 dark:text-white">Links</h3>
+      <p class="mb-1"><a href="./how-it-works.html" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors">How it works</a></p>
+      <p><a href="./gallery.html" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors">Gallery</a></p>
+    </div>
   </div>
+  <div class="text-center text-gray-400 dark:text-gray-600 mt-10 text-xs">© 2026 Miami Service Amenities</div>
 </footer>
 
+<script>
+  lucide.createIcons();
+  const html = document.documentElement;
+
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuIcon = document.getElementById('menuIcon');
+  const closeIcon = document.getElementById('closeIcon');
+  menuBtn.addEventListener('click', () => {
+    const isHidden = mobileMenu.classList.toggle('hidden');
+    menuIcon.classList.toggle('hidden', !isHidden);
+    closeIcon.classList.toggle('hidden', isHidden);
+  });
+
+  function toggleDark() {
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    lucide.createIcons();
+  }
+  document.getElementById('darkToggleDesktop').addEventListener('click', toggleDark);
+  document.getElementById('darkToggleMobile').addEventListener('click', toggleDark);
+</script>
 </body>
 </html>

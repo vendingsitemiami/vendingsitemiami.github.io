@@ -5,65 +5,183 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How It Works | Miami Service Amenities</title>
   <meta name="description" content="Learn how our free vending machine service works from request to installation and ongoing support.">
-
+  <script>
+    if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
-  
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { button: '#2563eb' } } }
+    };
+  </script>
+  <style>
+    body { font-family: system-ui, sans-serif; }
+    .dark-toggle { transition: background 0.2s, transform 0.2s; }
+    .dark-toggle:hover { transform: scale(1.08); }
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
 </head>
 
-<body class="bg-white">
+<body class="bg-white dark:bg-gray-950 overflow-x-hidden transition-colors duration-300">
 
-<div class="max-w-6xl mx-auto px-4 sm:px-6 md:px-20 py-10">
-  <a href="./index.html" class="text-gray-600 hover:text-blue-600 font-semibold">
-    ← Back Home
-  </a>
-</div>
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-white/90 dark:bg-gray-950/90 backdrop-blur border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
+    <div class="flex items-center justify-between h-16 gap-4">
+      <div class="text-sm sm:text-base lg:text-lg font-bold text-gray-800 dark:text-white truncate shrink-0">
+        Miami Service Amenities
+      </div>
+      <div class="hidden md:flex items-center gap-5 lg:gap-8 shrink-0">
+        <a href="./index.html#info" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">Info</a>
+        <a href="./index.html#faq" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">FAQ</a>
+        <a href="./how-it-works.html" class="text-blue-600 dark:text-blue-400 text-sm font-semibold whitespace-nowrap">How it works</a>
+        <a href="./gallery.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">Gallery</a>
+        <button id="darkToggleDesktop" class="dark-toggle p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Toggle dark mode">
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+        </button>
+        <a href="./form.html" class="flex items-center gap-2 bg-button text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition shadow-md text-sm font-medium whitespace-nowrap">
+          <i data-lucide="package" class="w-4 h-4 shrink-0"></i>
+          Request a Machine
+        </a>
+      </div>
+      <div class="flex md:hidden items-center gap-2 shrink-0">
+        <button id="darkToggleMobile" class="dark-toggle p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300" aria-label="Toggle dark mode">
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+        </button>
+        <button id="menuBtn" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white" aria-label="Toggle menu">
+          <i data-lucide="menu" class="w-5 h-5 block" id="menuIcon"></i>
+          <i data-lucide="x" class="w-5 h-5 hidden" id="closeIcon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
+    <div class="px-6 py-5 space-y-3 text-center">
+      <a href="./index.html#info" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">Info</a>
+      <a href="./index.html#faq" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">FAQ</a>
+      <a href="./how-it-works.html" class="block text-blue-600 dark:text-blue-400 py-1.5 text-sm font-semibold">How it works</a>
+      <a href="./gallery.html" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">Gallery</a>
+      <a href="./form.html" class="flex items-center justify-center gap-2 bg-button text-white px-6 py-3 rounded-xl shadow-md font-medium text-sm mt-2">
+        <i data-lucide="package" class="w-4 h-4"></i>
+        Request a Machine
+      </a>
+    </div>
+  </div>
+</nav>
 
-<section class="py-16 sm:py-20">
-  <div class="max-w-4xl mx-auto px-4 text-center">
-    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-10">
+<!-- HEADER -->
+<section class="py-16 md:py-20 text-center">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6" style="font-family:'Syne',sans-serif;">
       How Our Free Vending Service Works
     </h1>
-
-    <p class="text-gray-600 text-base sm:text-lg mb-6">
-      Our goal is to make getting a vending machine completely stress-free for your business.
-      We provide the machine, handle installation, and manage all ongoing maintenance at no cost to you.
-      After approval, we schedule delivery and installation. From there,
-      we take care of restocking, repairs, and customer support so you never
-      have to worry about managing the machine yourself.
+    <p class="text-gray-500 dark:text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
+      Our goal is to make getting a vending machine completely stress-free for your business. We provide the machine, handle installation, and manage all ongoing maintenance at no cost to you.
     </p>
   </div>
 </section>
 
-<section class="py-16 sm:py-20 bg-white">
-  <div class="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+<!-- STEPS -->
+<section class="pb-20">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-20 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
 
-    <div class="bg-white p-8 rounded-2xl shadow-lg border">
-      <h2 class="text-xl font-bold mb-4">1. Submit Request</h2>
-      <p class="text-gray-600 text-sm sm:text-base">
-        Fill out our short form with details about your business location.
-      </p>
+    <div class="fade-up bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition border border-gray-100 dark:border-gray-800" style="transition-delay:0s;">
+      <div class="flex justify-center mb-5 text-blue-600 dark:text-blue-400">
+        <i data-lucide="clipboard-list" class="w-8 h-8"></i>
+      </div>
+      <h2 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">1. Submit Request</h2>
+      <p class="text-gray-500 dark:text-gray-400 text-sm">Fill out our short form with details about your business location.</p>
     </div>
 
-    <div class="bg-white p-8 rounded-2xl shadow-lg border">
-      <h2 class="text-xl font-bold mb-4">2. We Install</h2>
-      <p class="text-gray-600 text-sm sm:text-base">
-        We deliver and install the machine quickly and professionally.
-      </p>
+    <div class="fade-up bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition border border-gray-100 dark:border-gray-800" style="transition-delay:0.1s;">
+      <div class="flex justify-center mb-5 text-blue-600 dark:text-blue-400">
+        <i data-lucide="truck" class="w-8 h-8"></i>
+      </div>
+      <h2 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">2. We Install</h2>
+      <p class="text-gray-500 dark:text-gray-400 text-sm">We deliver and install the machine quickly and professionally.</p>
     </div>
 
-    <div class="bg-white p-8 rounded-2xl shadow-lg border">
-      <h2 class="text-xl font-bold mb-4">3. Ongoing Service</h2>
-      <p class="text-gray-600 text-sm sm:text-base">
-        We maintain and restock the machine regularly to keep it running smoothly.
-      </p>
+    <div class="fade-up bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition border border-gray-100 dark:border-gray-800" style="transition-delay:0.2s;">
+      <div class="flex justify-center mb-5 text-blue-600 dark:text-blue-400">
+        <i data-lucide="refresh-cw" class="w-8 h-8"></i>
+      </div>
+      <h2 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">3. Ongoing Service</h2>
+      <p class="text-gray-500 dark:text-gray-400 text-sm">We maintain and restock the machine regularly to keep it running smoothly.</p>
     </div>
 
   </div>
 </section>
 
-<footer class="py-10 text-center text-gray-500 text-sm border-t">
-  © 2026 Miami Service Amenities
+<!-- CTA -->
+<section class="py-16 md:py-20 bg-blue-600 dark:bg-blue-700">
+  <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-4" style="font-family:'Syne',sans-serif;">Ready to get started?</h2>
+    <p class="text-blue-100 mb-8 text-sm sm:text-base">No cost, no contracts. Just a free vending machine for your business.</p>
+    <a href="./form.html" class="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 text-sm sm:text-base">
+      <i data-lucide="package" class="w-4 h-4 shrink-0"></i>
+      Request a Free Machine
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12">
+  <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-20 grid sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
+    <div>
+      <h3 class="font-bold mb-3 text-gray-900 dark:text-white">Miami Service Amenities</h3>
+      <p class="text-gray-500 dark:text-gray-400 text-sm">Providing free vending machines across Miami.</p>
+    </div>
+    <div>
+      <h3 class="font-bold mb-3 text-gray-900 dark:text-white">Contact</h3>
+      <p class="flex items-center justify-center sm:justify-start gap-2 text-gray-500 dark:text-gray-400 text-sm mb-1">
+        <i data-lucide="phone" class="w-3.5 h-3.5 shrink-0"></i>(305) 615-0817
+      </p>
+      <p class="flex items-center justify-center sm:justify-start gap-2 text-gray-500 dark:text-gray-400 text-sm">
+        <i data-lucide="mail" class="w-3.5 h-3.5 shrink-0"></i>info@serviceamenities.com
+      </p>
+    </div>
+    <div class="sm:col-span-2 md:col-span-1">
+      <h3 class="font-bold mb-3 text-gray-900 dark:text-white">Links</h3>
+      <p class="mb-1"><a href="./how-it-works.html" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors">How it works</a></p>
+      <p><a href="./gallery.html" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors">Gallery</a></p>
+    </div>
+  </div>
+  <div class="text-center text-gray-400 dark:text-gray-600 mt-10 text-xs">© 2026 Miami Service Amenities</div>
 </footer>
 
+<script>
+  lucide.createIcons();
+  const html = document.documentElement;
+
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuIcon = document.getElementById('menuIcon');
+  const closeIcon = document.getElementById('closeIcon');
+  menuBtn.addEventListener('click', () => {
+    const isHidden = mobileMenu.classList.toggle('hidden');
+    menuIcon.classList.toggle('hidden', !isHidden);
+    closeIcon.classList.toggle('hidden', isHidden);
+  });
+
+  function toggleDark() {
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    lucide.createIcons();
+  }
+  document.getElementById('darkToggleDesktop').addEventListener('click', toggleDark);
+  document.getElementById('darkToggleMobile').addEventListener('click', toggleDark);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>

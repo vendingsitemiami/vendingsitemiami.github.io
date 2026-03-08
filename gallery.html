@@ -1,42 +1,166 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Gallery - Miami Service Amenities</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        colors: {
-                            button: "#2563eb",
-                        },
-                    },
-                },
-            };
-        </script>
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Miami Service Amenities</title>
+  <script>
+    if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { button: '#2563eb' } } }
+    };
+  </script>
+  <style>
+    body { font-family: system-ui, sans-serif; }
+    .dark-toggle { transition: background 0.2s, transform 0.2s; }
+    .dark-toggle:hover { transform: scale(1.08); }
+    .img-card { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .img-card.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
 
-<body class="bg-white">
+<body class="bg-white dark:bg-gray-950 overflow-x-hidden transition-colors duration-300">
 
-<div class="max-w-7xl mx-auto px-6 md:px-20 py-10">
-  <a href="./index.html" class="text-gray-600 hover:text-blue-600 font-semibold">← Back Home</a>
-</div>
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-white/90 dark:bg-gray-950/90 backdrop-blur border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
+    <div class="flex items-center justify-between h-16 gap-4">
+      <div class="text-sm sm:text-base lg:text-lg font-bold text-gray-800 dark:text-white truncate shrink-0">
+        Miami Service Amenities
+      </div>
+      <div class="hidden md:flex items-center gap-5 lg:gap-8 shrink-0">
+        <a href="./index.html#info" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">Info</a>
+        <a href="./index.html#faq" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">FAQ</a>
+        <a href="./how-it-works.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">How it works</a>
+        <a href="./gallery.html" class="text-blue-600 dark:text-blue-400 text-sm font-semibold whitespace-nowrap">Gallery</a>
+        <button id="darkToggleDesktop" class="dark-toggle p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Toggle dark mode">
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+        </button>
+        <a href="./form.html" class="flex items-center gap-2 bg-button text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition shadow-md text-sm font-medium whitespace-nowrap">
+          <i data-lucide="package" class="w-4 h-4 shrink-0"></i>
+          Request a Machine
+        </a>
+      </div>
+      <div class="flex md:hidden items-center gap-2 shrink-0">
+        <button id="darkToggleMobile" class="dark-toggle p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300" aria-label="Toggle dark mode">
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+        </button>
+        <button id="menuBtn" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white" aria-label="Toggle menu">
+          <i data-lucide="menu" class="w-5 h-5 block" id="menuIcon"></i>
+          <i data-lucide="x" class="w-5 h-5 hidden" id="closeIcon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
+    <div class="px-6 py-5 space-y-3 text-center">
+      <a href="./index.html#info" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">Info</a>
+      <a href="./index.html#faq" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">FAQ</a>
+      <a href="./how-it-works.html" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">How it works</a>
+      <a href="./gallery.html" class="block text-blue-600 dark:text-blue-400 py-1.5 text-sm font-semibold">Gallery</a>
+      <a href="./form.html" class="flex items-center justify-center gap-2 bg-button text-white px-6 py-3 rounded-xl shadow-md font-medium text-sm mt-2">
+        <i data-lucide="package" class="w-4 h-4"></i>
+        Request a Machine
+      </a>
+    </div>
+  </div>
+</nav>
 
-<section class="px-6 md:px-20 pb-20">
-  <h1 class="text-4xl font-extrabold text-center mb-4">Our Installations</h1>
-  <p class="text-center text-gray-500 mb-12">Real vending machines placed in real locations.</p>
-
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-    <img src="./g/gallery5.jpg" class="rounded-2xl shadow-lg hover:shadow-2xl transition hover:scale-105 aspect-square object-cover">
-    <img src="./g/gallery6.jpg" class="rounded-2xl shadow-lg hover:shadow-2xl transition hover:scale-105 aspect-square object-cover">
-    <img src="./g/gallery9.jpg" class="rounded-2xl shadow-lg hover:shadow-2xl transition hover:scale-105 aspect-square object-cover">
-    <img src="./g/gallery8.jpg" class="rounded-2xl shadow-lg hover:shadow-2xl transition hover:scale-105 aspect-square object-cover">
-    <img src="./g/gallery10.jpg" class="rounded-2xl shadow-lg hover:shadow-2xl transition hover:scale-105 aspect-square object-cover">
-    <img src="./g/gallery5.jpg" class="rounded-2xl shadow-lg hover:shadow-2xl transition hover:scale-105 aspect-square object-cover">
+<!-- HEADER -->
+<section class="py-16 md:py-20 text-center">
+  <div class="max-w-2xl mx-auto px-4 sm:px-6">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4" style="font-family:'Syne',sans-serif;">Our Installations</h1>
+    <p class="text-gray-500 dark:text-gray-400 text-base sm:text-lg">Real vending machines placed in real locations across Miami.</p>
   </div>
 </section>
 
+<!-- GALLERY -->
+<section class="pb-20 px-4 sm:px-6 lg:px-20">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="img-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-gray-800">
+      <img src="./g/gallery5.jpg" class="w-full aspect-square object-cover" alt="Installation 1">
+    </div>
+    <div class="img-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-gray-800">
+      <img src="./g/gallery6.jpg" class="w-full aspect-square object-cover" alt="Installation 2">
+    </div>
+    <div class="img-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-gray-800">
+      <img src="./g/gallery9.jpg" class="w-full aspect-square object-cover" alt="Installation 3">
+    </div>
+    <div class="img-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-gray-800">
+      <img src="./g/gallery8.jpg" class="w-full aspect-square object-cover" alt="Installation 4">
+    </div>
+    <div class="img-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-gray-800">
+      <img src="./g/gallery10.jpg" class="w-full aspect-square object-cover" alt="Installation 5">
+    </div>
+    <div class="img-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-gray-800">
+      <img src="./g/gallery5.jpg" class="w-full aspect-square object-cover" alt="Installation 6">
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12">
+  <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-20 grid sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
+    <div>
+      <h3 class="font-bold mb-3 text-gray-900 dark:text-white">Miami Service Amenities</h3>
+      <p class="text-gray-500 dark:text-gray-400 text-sm">Providing free vending machines across Miami.</p>
+    </div>
+    <div>
+      <h3 class="font-bold mb-3 text-gray-900 dark:text-white">Contact</h3>
+      <p class="flex items-center justify-center sm:justify-start gap-2 text-gray-500 dark:text-gray-400 text-sm mb-1">
+        <i data-lucide="phone" class="w-3.5 h-3.5 shrink-0"></i>(305) 615-0817
+      </p>
+      <p class="flex items-center justify-center sm:justify-start gap-2 text-gray-500 dark:text-gray-400 text-sm">
+        <i data-lucide="mail" class="w-3.5 h-3.5 shrink-0"></i>info@serviceamenities.com
+      </p>
+    </div>
+    <div class="sm:col-span-2 md:col-span-1">
+      <h3 class="font-bold mb-3 text-gray-900 dark:text-white">Links</h3>
+      <p class="mb-1"><a href="./how-it-works.html" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors">How it works</a></p>
+      <p><a href="./gallery.html" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors">Gallery</a></p>
+    </div>
+  </div>
+  <div class="text-center text-gray-400 dark:text-gray-600 mt-10 text-xs">© 2026 Miami Service Amenities</div>
+</footer>
+
+<script>
+  lucide.createIcons();
+  const html = document.documentElement;
+
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuIcon = document.getElementById('menuIcon');
+  const closeIcon = document.getElementById('closeIcon');
+  menuBtn.addEventListener('click', () => {
+    const isHidden = mobileMenu.classList.toggle('hidden');
+    menuIcon.classList.toggle('hidden', !isHidden);
+    closeIcon.classList.toggle('hidden', isHidden);
+  });
+
+  function toggleDark() {
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    lucide.createIcons();
+  }
+  document.getElementById('darkToggleDesktop').addEventListener('click', toggleDark);
+  document.getElementById('darkToggleMobile').addEventListener('click', toggleDark);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.img-card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.08}s`;
+    observer.observe(el);
+  });
+</script>
 </body>
 </html>
