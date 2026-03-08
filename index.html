@@ -1,14 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Miami Service Amenities</title>
   <meta name="description" content="Request free vending machines for your business in Miami. Fast setup, no cost, full service support.">
 
+  <script>
+    if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
@@ -18,47 +26,120 @@
       },
     };
   </script>
+
+  <style>
+    body { font-family: system-ui, sans-serif; }
+
+    .hero-title-sans {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+    }
+    .hero-title-serif {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-style: italic;
+      font-weight: 700;
+    }
+
+    .hero-word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(36px);
+      animation: wordUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes wordUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .video-reveal {
+      opacity: 0;
+      transform: scale(0.95) translateY(24px);
+      animation: videoIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation-delay: 0.1s;
+    }
+    @keyframes videoIn {
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .badge-slide {
+      opacity: 0;
+      transform: translateY(-12px);
+      animation: badgeIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes badgeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .stat-col {
+      height: 0%;
+      transition: height 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .dark-toggle { transition: background 0.2s, transform 0.2s; }
+    .dark-toggle:hover { transform: scale(1.08); }
+  </style>
 </head>
 
-<body class="bg-white overflow-x-hidden">
+<body class="bg-white dark:bg-gray-950 overflow-x-hidden transition-colors duration-300">
 
 <!-- NAV -->
-<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-20">
-    <div class="flex items-center justify-between h-16">
-      
-      <div class="text-lg sm:text-xl font-bold text-gray-800">
+<nav class="sticky top-0 z-50 bg-white/90 dark:bg-gray-950/90 backdrop-blur border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
+    <div class="flex items-center justify-between h-16 gap-4">
+
+      <div class="text-sm sm:text-base lg:text-lg font-bold text-gray-800 dark:text-white truncate shrink-0">
         Miami Service Amenities
       </div>
 
       <!-- Desktop Menu -->
-      <div class="hidden md:flex space-x-8 items-center">
-        <a href="#info" class="text-gray-600 hover:text-gray-900">Info</a>
-        <a href="#faq" class="text-gray-600 hover:text-gray-900">FAQ</a>
-        <a href="./how-it-works.html" class="text-gray-600 hover:text-gray-900">How it works</a>
-        <a href="./gallery.html" class="text-gray-600 hover:text-gray-900">Gallery</a>
-        <a href="./form.html"
-           class="bg-button text-white px-5 py-2 rounded-xl hover:bg-blue-700 transition shadow-md">
+      <div class="hidden md:flex items-center gap-5 lg:gap-8 shrink-0">
+        <a href="#info" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">Info</a>
+        <a href="#faq" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">FAQ</a>
+        <a href="./how-it-works.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">How it works</a>
+        <a href="./gallery.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">Gallery</a>
+
+        <button id="darkToggleDesktop" class="dark-toggle p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Toggle dark mode">
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+        </button>
+
+        <a href="./form.html" class="flex items-center gap-2 bg-button text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition shadow-md text-sm font-medium whitespace-nowrap">
+          <i data-lucide="package" class="w-4 h-4 shrink-0"></i>
           Request a Machine
         </a>
       </div>
 
-      <!-- Mobile Button -->
-      <button id="menuBtn" class="md:hidden text-gray-800 text-2xl">
-        ☰
-      </button>
+      <!-- Mobile right -->
+      <div class="flex md:hidden items-center gap-2 shrink-0">
+        <button id="darkToggleMobile" class="dark-toggle p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300" aria-label="Toggle dark mode">
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+        </button>
+        <button id="menuBtn" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white" aria-label="Toggle menu">
+          <i data-lucide="menu" class="w-5 h-5 block" id="menuIcon"></i>
+          <i data-lucide="x" class="w-5 h-5 hidden" id="closeIcon"></i>
+        </button>
+      </div>
     </div>
   </div>
 
   <!-- Mobile Dropdown -->
-  <div id="mobileMenu" class="hidden md:hidden border-t bg-white">
-    <div class="px-6 py-4 space-y-4 text-center">
-      <a href="#info" class="block text-gray-700">Info</a>
-      <a href="#faq" class="block text-gray-700">FAQ</a>
-      <a href="./how-it-works.html" class="block text-gray-700">How it works</a>
-      <a href="./gallery.html" class="block text-gray-700">Gallery</a>
-      <a href="./form.html"
-         class="block bg-button text-white px-6 py-3 rounded-xl shadow-md">
+  <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
+    <div class="px-6 py-5 space-y-3 text-center">
+      <a href="#info" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">Info</a>
+      <a href="#faq" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">FAQ</a>
+      <a href="./how-it-works.html" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">How it works</a>
+      <a href="./gallery.html" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">Gallery</a>
+      <a href="./form.html" class="flex items-center justify-center gap-2 bg-button text-white px-6 py-3 rounded-xl shadow-md font-medium text-sm mt-2">
+        <i data-lucide="package" class="w-4 h-4"></i>
         Request a Machine
       </a>
     </div>
@@ -66,121 +147,230 @@
 </nav>
 
 <!-- HERO -->
-<section class="py-16 md:py-20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 flex flex-col md:flex-row items-center">
+<section class="py-16 md:py-24 overflow-hidden">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
 
-    <div class="md:w-1/2 mb-10 md:mb-0">
-      <video autoplay muted loop playsinline class="rounded-3xl shadow-2xl w-full">
-        <source src="./machine.mp4" type="video/mp4">
-      </video>
+    <div class="badge-slide inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-400 text-xs font-semibold px-4 py-1.5 rounded-full mb-8">
+      <span class="w-2 h-2 bg-blue-500 rounded-full inline-block animate-pulse"></span>
+      Miami's #1 Free Vending Service
     </div>
 
-    <div class="md:w-1/2 md:pl-16 text-center md:text-left">
-      <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
-        Free Vending Machines
-        <span class="block text-button">Installed in Days</span>
-      </h1>
+    <div class="video-reveal w-full max-w-xl mb-10">
+      <div class="relative">
+        <div class="absolute -inset-4 bg-blue-100 dark:bg-blue-900/30 rounded-[2.5rem] blur-2xl opacity-60"></div>
+        <video autoplay muted loop playsinline class="relative rounded-3xl shadow-2xl w-full">
+          <source src="./machine.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
 
-      <p class="text-gray-600 text-base sm:text-lg mb-8">
-        No contracts. No fees. Full service installation, restocking, and maintenance.
-      </p>
+    <h1 class="mb-5 leading-[1.08]" style="font-size: clamp(2.2rem, 6vw, 4.8rem);">
+      <span class="hero-title-sans text-gray-900 dark:text-white">
+        <span class="hero-word" style="animation-delay:0.2s">Free&nbsp;</span>
+        <span class="hero-word" style="animation-delay:0.3s">Vending&nbsp;</span>
+        <span class="hero-word" style="animation-delay:0.4s">Machines</span>
+      </span>
+      <span class="block hero-title-serif text-button" style="font-size: clamp(2.4rem, 6.5vw, 5.2rem);">
+        <span class="hero-word" style="animation-delay:0.5s">Installed&nbsp;</span>
+        <span class="hero-word" style="animation-delay:0.6s">in Days</span>
+      </span>
+    </h1>
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-        <a href="./form.html"
-          class="bg-button text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold shadow-xl hover:scale-105 transition">
-          Request Free Machine
-        </a>
+    <p class="fade-up text-gray-500 dark:text-gray-400 text-base sm:text-lg mb-8 max-w-md" style="animation-delay:0.7s">
+      No contracts. No fees. Full service installation, restocking, and maintenance — all on us.
+    </p>
 
-        <a href="#info"
-          class="border border-gray-300 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-gray-100 transition">
-          Learn More
-        </a>
+    <div class="fade-up flex flex-col sm:flex-row gap-3 justify-center w-full max-w-xs sm:max-w-none" style="animation-delay:0.8s">
+      <a href="./form.html" class="flex items-center justify-center gap-2 bg-button text-white px-7 py-3.5 rounded-xl font-semibold shadow-lg hover:bg-blue-700 hover:shadow-xl transition-all duration-200 text-sm">
+        <i data-lucide="package" class="w-4 h-4 shrink-0"></i>
+        Request Free Machine
+      </a>
+      <a href="#info" class="flex items-center justify-center gap-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 px-7 py-3.5 rounded-xl font-semibold hover:bg-gray-50 dark:hover:bg-gray-900 transition text-sm">
+        <i data-lucide="info" class="w-4 h-4 shrink-0"></i>
+        Learn More
+      </a>
+    </div>
+
+    <p class="fade-up flex items-center gap-2 text-gray-400 dark:text-gray-500 text-sm mt-5 mb-14" style="animation-delay:0.85s">
+      <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+      (305) 615-0817
+    </p>
+
+    <!-- STAT COLUMNS -->
+    <div class="fade-up w-full max-w-xs" style="animation-delay:0.95s" id="statBars">
+      <div class="flex items-end justify-center gap-8" style="height:120px;">
+        <div class="flex flex-col items-center justify-end h-full w-16">
+          <div id="col1" class="stat-col w-full rounded-t-xl bg-blue-400 dark:bg-blue-600" style="transition-delay:0s;"></div>
+        </div>
+        <div class="flex flex-col items-center justify-end h-full w-16">
+          <div id="col2" class="stat-col w-full rounded-t-xl bg-blue-500 dark:bg-blue-500" style="transition-delay:0.18s;"></div>
+        </div>
+        <div class="flex flex-col items-center justify-end h-full w-16">
+          <div id="col3" class="stat-col w-full rounded-t-xl bg-blue-700 dark:bg-blue-400" style="transition-delay:0.36s;"></div>
+        </div>
       </div>
 
-      <p class="text-gray-500 mt-6 text-sm sm:text-base">
-        📞 (305) 615-0817
-      </p>
+      <div class="border-t-2 border-gray-200 dark:border-gray-700 mb-4"></div>
+
+      <div class="flex justify-center gap-8">
+        <div class="text-center w-16">
+          <div class="font-extrabold text-gray-900 dark:text-white text-lg leading-tight" id="stat1">0</div>
+          <div class="text-xs text-gray-400 dark:text-gray-500 mt-0.5 leading-tight">Machines<br>placed</div>
+        </div>
+        <div class="text-center w-16">
+          <div class="font-extrabold text-gray-900 dark:text-white text-lg leading-tight" id="stat2">0hr</div>
+          <div class="text-xs text-gray-400 dark:text-gray-500 mt-0.5 leading-tight">Avg install<br>time</div>
+        </div>
+        <div class="text-center w-16">
+          <div class="font-extrabold text-gray-900 dark:text-white text-lg leading-tight">$0</div>
+          <div class="text-xs text-gray-400 dark:text-gray-500 mt-0.5 leading-tight">Cost<br>to you</div>
+        </div>
+      </div>
     </div>
+
   </div>
 </section>
 
 <!-- INFO -->
-<section id="info" class="py-16 md:py-20 bg-white">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 md:px-20 grid gap-8 md:grid-cols-3 text-center">
-    <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition border">
-      <h2 class="text-xl font-bold mb-4">Fast Setup</h2>
-      <p>Installed quickly with minimal disruption.</p>
+<section id="info" class="py-16 md:py-20">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-20 grid gap-6 sm:grid-cols-2 md:grid-cols-3 text-center">
+    <div class="bg-white dark:bg-gray-900 p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition border border-gray-100 dark:border-gray-800">
+      <div class="flex justify-center mb-4 text-blue-600 dark:text-blue-400">
+        <i data-lucide="zap" class="w-7 h-7"></i>
+      </div>
+      <h2 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Fast Setup</h2>
+      <p class="text-gray-500 dark:text-gray-400 text-sm">Installed quickly with minimal disruption.</p>
     </div>
-
-    <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition border">
-      <h2 class="text-xl font-bold mb-4">24/7 Support</h2>
-      <p>Maintenance and restocking fully handled.</p>
+    <div class="bg-white dark:bg-gray-900 p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition border border-gray-100 dark:border-gray-800">
+      <div class="flex justify-center mb-4 text-blue-600 dark:text-blue-400">
+        <i data-lucide="headphones" class="w-7 h-7"></i>
+      </div>
+      <h2 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">24/7 Support</h2>
+      <p class="text-gray-500 dark:text-gray-400 text-sm">Maintenance and restocking fully handled.</p>
     </div>
-
-    <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition border">
-      <h2 class="text-xl font-bold mb-4">Zero Cost</h2>
-      <p>No fees, no contracts, no hidden charges.</p>
+    <div class="bg-white dark:bg-gray-900 p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition border border-gray-100 dark:border-gray-800 sm:col-span-2 md:col-span-1">
+      <div class="flex justify-center mb-4 text-blue-600 dark:text-blue-400">
+        <i data-lucide="circle-dollar-sign" class="w-7 h-7"></i>
+      </div>
+      <h2 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Zero Cost</h2>
+      <p class="text-gray-500 dark:text-gray-400 text-sm">No fees, no contracts, no hidden charges.</p>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="py-16 md:py-20 bg-white">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-20">
-    <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-
-    <div class="space-y-6">
-      <div class="bg-white p-6 rounded-2xl shadow-md border">
-        <h3 class="font-semibold mb-2">How do I request a machine?</h3>
-        <p class="text-gray-600">Fill out the request form or call (305) 615-0817.</p>
+<section id="faq" class="py-16 md:py-20">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-20">
+    <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">Frequently Asked Questions</h2>
+    <div class="space-y-4">
+      <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-gray-800">
+        <h3 class="font-semibold mb-2 text-gray-900 dark:text-white flex items-center gap-2">
+          <i data-lucide="circle-help" class="w-4 h-4 text-blue-500 shrink-0"></i>
+          How do I request a machine?
+        </h3>
+        <p class="text-gray-500 dark:text-gray-400 text-sm">Fill out the request form or call (305) 615-0817.</p>
       </div>
-
-      <div class="bg-white p-6 rounded-2xl shadow-md border">
-        <h3 class="font-semibold mb-2">Is it really free?</h3>
-        <p class="text-gray-600">Yes. No upfront costs or service fees.</p>
+      <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-gray-800">
+        <h3 class="font-semibold mb-2 text-gray-900 dark:text-white flex items-center gap-2">
+          <i data-lucide="circle-help" class="w-4 h-4 text-blue-500 shrink-0"></i>
+          Is it really free?
+        </h3>
+        <p class="text-gray-500 dark:text-gray-400 text-sm">Yes. No upfront costs or service fees.</p>
       </div>
-
-      <div class="bg-white p-6 rounded-2xl shadow-md border">
-        <h3 class="font-semibold mb-2">How fast is installation?</h3>
-        <p class="text-gray-600">Most installs are completed within a few days.</p>
+      <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-gray-800">
+        <h3 class="font-semibold mb-2 text-gray-900 dark:text-white flex items-center gap-2">
+          <i data-lucide="circle-help" class="w-4 h-4 text-blue-500 shrink-0"></i>
+          How fast is installation?
+        </h3>
+        <p class="text-gray-500 dark:text-gray-400 text-sm">Most installs are completed within a few days.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER (unchanged) -->
-<footer class="bg-gray-50 border-t py-12">
-  <div class="max-w-6xl mx-auto px-6 md:px-20 grid md:grid-cols-3 gap-8 text-center md:text-left">
+<!-- FOOTER -->
+<footer class="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12">
+  <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-20 grid sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
     <div>
-      <h3 class="font-bold mb-3">Miami Service Amenities</h3>
-      <p class="text-gray-600">Providing free vending machines across Miami.</p>
+      <h3 class="font-bold mb-3 text-gray-900 dark:text-white">Miami Service Amenities</h3>
+      <p class="text-gray-500 dark:text-gray-400 text-sm">Providing free vending machines across Miami.</p>
     </div>
-
     <div>
-      <h3 class="font-bold mb-3">Contact</h3>
-      <p>(305) 615-0817</p>
-      <p>info@serviceamenities.com</p>
+      <h3 class="font-bold mb-3 text-gray-900 dark:text-white">Contact</h3>
+      <p class="flex items-center justify-center sm:justify-start gap-2 text-gray-500 dark:text-gray-400 text-sm mb-1">
+        <i data-lucide="phone" class="w-3.5 h-3.5 shrink-0"></i>(305) 615-0817
+      </p>
+      <p class="flex items-center justify-center sm:justify-start gap-2 text-gray-500 dark:text-gray-400 text-sm">
+        <i data-lucide="mail" class="w-3.5 h-3.5 shrink-0"></i>info@serviceamenities.com
+      </p>
     </div>
-
-    <div>
-      <h3 class="font-bold mb-3">Links</h3>
-      <p><a href="./how-it-works.html">How it works</a></p>
-      <p><a href="./gallery.html">Gallery</a></p>
+    <div class="sm:col-span-2 md:col-span-1">
+      <h3 class="font-bold mb-3 text-gray-900 dark:text-white">Links</h3>
+      <p class="mb-1"><a href="./how-it-works.html" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors">How it works</a></p>
+      <p><a href="./gallery.html" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors">Gallery</a></p>
     </div>
   </div>
-
-  <div class="text-center text-gray-500 mt-10 text-sm">
+  <div class="text-center text-gray-400 dark:text-gray-600 mt-10 text-xs">
     © 2026 Miami Service Amenities
   </div>
 </footer>
 
 <script>
-  const btn = document.getElementById('menuBtn');
-  const menu = document.getElementById('mobileMenu');
+  lucide.createIcons();
 
-  btn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
+  const html = document.documentElement;
+
+  if (localStorage.getItem('theme') === 'dark') {
+    html.classList.add('dark');
+  } else {
+    html.classList.remove('dark');
+  }
+
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuIcon = document.getElementById('menuIcon');
+  const closeIcon = document.getElementById('closeIcon');
+
+  menuBtn.addEventListener('click', () => {
+    const isHidden = mobileMenu.classList.toggle('hidden');
+    menuIcon.classList.toggle('hidden', !isHidden);
+    closeIcon.classList.toggle('hidden', isHidden);
   });
+
+  function toggleDark() {
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    lucide.createIcons();
+  }
+
+  document.getElementById('darkToggleDesktop').addEventListener('click', toggleDark);
+  document.getElementById('darkToggleMobile').addEventListener('click', toggleDark);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      observer.disconnect();
+      setTimeout(() => {
+        document.getElementById('col1').style.height = '52%';
+        document.getElementById('col2').style.height = '74%';
+        document.getElementById('col3').style.height = '100%';
+      }, 150);
+      const duration = 1400;
+      const startTime = performance.now();
+      function tick(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        document.getElementById('stat1').textContent = Math.round(ease * 50) + '+';
+        document.getElementById('stat2').textContent = Math.round(ease * 48) + 'hr';
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.3 });
+
+  const el = document.getElementById('statBars');
+  if (el) observer.observe(el);
 </script>
 
 </body>
