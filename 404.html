@@ -1,71 +1,262 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 — Page Not Found | Miami Service Amenities</title>
   <script>
-    if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
-    else document.documentElement.classList.remove('dark');
+    const t = localStorage.getItem('theme');
+    if (t === 'light') document.documentElement.classList.remove('dark');
+    else document.documentElement.classList.add('dark');
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       darkMode: 'class',
-      theme: { extend: { colors: { button: '#2563eb' } } }
+      theme: { extend: { colors: { brand: '#2563eb' } } }
     };
   </script>
   <style>
-    body { font-family: system-ui, sans-serif; }
-    .dark-toggle { transition: background 0.2s, transform 0.2s; }
-    .dark-toggle:hover { transform: scale(1.08); }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; }
+
+    .glitch {
+      position: relative;
+      font-family: 'Syne', sans-serif;
+      font-weight: 900;
+      font-size: clamp(7rem, 22vw, 14rem);
+      line-height: 1;
+      color: #fff;
+      letter-spacing: -0.04em;
+      user-select: none;
+    }
+    .glitch::before, .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .glitch::before {
+      color: #60a5fa;
+      animation: glitch-top 3.5s infinite linear;
+      clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+      transform: translateX(-3px);
+    }
+    .glitch::after {
+      color: #f87171;
+      animation: glitch-bot 3.5s infinite linear;
+      clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+      transform: translateX(3px);
+    }
+    @keyframes glitch-top {
+      0%, 89%   { transform: translateX(-3px); opacity: 1; }
+      90%       { transform: translateX(4px) skewX(5deg); opacity: 0.8; }
+      91%       { transform: translateX(-6px); }
+      92%       { transform: translateX(0); opacity: 1; }
+      100%      { transform: translateX(-3px); }
+    }
+    @keyframes glitch-bot {
+      0%, 85%   { transform: translateX(3px); opacity: 1; }
+      86%       { transform: translateX(-5px) skewX(-4deg); opacity: 0.8; }
+      87%       { transform: translateX(7px); }
+      89%       { transform: translateX(0); opacity: 1; }
+      100%      { transform: translateX(3px); }
+    }
+
+    .scanlines {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+    html.dark .scanlines {
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent, transparent 3px,
+        rgba(255,255,255,0.025) 3px, rgba(255,255,255,0.025) 4px
+      );
+    }
+    html:not(.dark) .scanlines {
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent, transparent 3px,
+        rgba(0,0,0,0.04) 3px, rgba(0,0,0,0.04) 4px
+      );
+    }
+
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(37,99,235,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,99,235,0.07) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .glow-blue {
+      position: fixed;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,99,235,0.18) 0%, transparent 70%);
+      top: -200px; left: -150px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow-red {
+      position: fixed;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(239,68,68,0.1) 0%, transparent 70%);
+      bottom: -150px; right: -100px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card-border {
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(10,10,18,0.75);
+      backdrop-filter: blur(20px);
+    }
+    html:not(.dark) .card-border {
+      border: 1px solid rgba(0,0,0,0.08);
+      background: rgba(255,255,255,0.85);
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: #fff;
+      transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+    }
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 24px rgba(37,99,235,0.45);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.7);
+      transition: border-color 0.15s, color 0.15s, transform 0.1s;
+    }
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.3);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    html:not(.dark) .btn-ghost {
+      border: 1px solid rgba(0,0,0,0.14);
+      color: rgba(0,0,0,0.65);
+    }
+    html:not(.dark) .btn-ghost:hover { border-color: rgba(0,0,0,0.3); color: #0f172a; }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(239,68,68,0.12);
+      border: 1px solid rgba(239,68,68,0.25);
+      color: #f87171;
+    }
+    html:not(.dark) .status-pill { background: rgba(220,38,38,0.08); border-color: rgba(220,38,38,0.2); color: #dc2626; }
+
+    .status-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #f87171;
+      animation: pulse-dot 1.8s ease-in-out infinite;
+    }
+    html:not(.dark) .status-dot { background: #dc2626; }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.55s ease forwards;
+    }
+    .fade-up:nth-child(1) { animation-delay: 0.05s; }
+    .fade-up:nth-child(2) { animation-delay: 0.15s; }
+    .fade-up:nth-child(3) { animation-delay: 0.25s; }
+    .fade-up:nth-child(4) { animation-delay: 0.35s; }
+    .fade-up:nth-child(5) { animation-delay: 0.45s; }
+    .fade-up:nth-child(6) { animation-delay: 0.55s; }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dark-toggle { transition: background 0.2s, transform 0.15s; }
+    .dark-toggle:hover { transform: scale(1.1); }
+
+    html.dark body { background: #030712; }
+    html:not(.dark) body { background: #f8fafc; }
+    html:not(.dark) .glitch { color: #0f172a; }
+    html:not(.dark) .glitch::before { color: #2563eb; }
+    html:not(.dark) .glitch::after  { color: #dc2626; }
+    html:not(.dark) .glow-blue { background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%); }
+    html:not(.dark) .glow-red  { background: radial-gradient(circle, rgba(239,68,68,0.06) 0%, transparent 70%); }
   </style>
 </head>
 
-<body class="bg-white dark:bg-gray-950 min-h-screen overflow-x-hidden transition-colors duration-300">
+<body class="min-h-screen overflow-x-hidden">
+
+<div class="scanlines"></div>
+<div class="grid-bg"></div>
+<div class="glow-blue"></div>
+<div class="glow-red"></div>
 
 <!-- NAV -->
-<nav class="sticky top-0 z-50 bg-white/90 dark:bg-gray-950/90 backdrop-blur border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+<nav class="relative z-50 border-b border-white/[0.06] dark:border-white/[0.06] bg-black/40 dark:bg-black/40 backdrop-blur-xl">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
     <div class="flex items-center justify-between h-16 gap-4">
-      <div class="text-sm sm:text-base lg:text-lg font-bold text-gray-800 dark:text-white truncate shrink-0">
+      <a href="/" class="text-sm sm:text-base font-bold text-white truncate shrink-0 tracking-tight" style="font-family:'Syne',sans-serif;">
         Miami Service Amenities
-      </div>
-      <div class="hidden md:flex items-center gap-5 lg:gap-8 shrink-0">
-        <a href="./index.html#info" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">Info</a>
-        <a href="./index.html#faq" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">FAQ</a>
-        <a href="./how-it-works.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">How it works</a>
-        <a href="./gallery.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">Gallery</a>
-        <button id="darkToggleDesktop" class="dark-toggle p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Toggle dark mode">
+      </a>
+      <div class="hidden md:flex items-center gap-6 lg:gap-8 shrink-0">
+        <a href="./index.html#info" class="text-white/50 hover:text-white text-sm transition-colors whitespace-nowrap">Info</a>
+        <a href="./index.html#faq" class="text-white/50 hover:text-white text-sm transition-colors whitespace-nowrap">FAQ</a>
+        <a href="./how-it-works.html" class="text-white/50 hover:text-white text-sm transition-colors whitespace-nowrap">How it works</a>
+        <a href="./gallery.html" class="text-white/50 hover:text-white text-sm transition-colors whitespace-nowrap">Gallery</a>
+        <button id="darkToggleDesktop" class="dark-toggle p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/60 hover:text-white" aria-label="Toggle theme">
           <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
           <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
         </button>
-        <a href="./form.html" class="flex items-center gap-2 bg-button text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition shadow-md text-sm font-medium whitespace-nowrap">
+        <a href="./form.html" class="btn-primary flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium whitespace-nowrap">
           <i data-lucide="package" class="w-4 h-4 shrink-0"></i>
           Request a Machine
         </a>
       </div>
       <div class="flex md:hidden items-center gap-2 shrink-0">
-        <button id="darkToggleMobile" class="dark-toggle p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300" aria-label="Toggle dark mode">
+        <button id="darkToggleMobile" class="dark-toggle p-2 rounded-lg bg-white/5 text-white/60" aria-label="Toggle theme">
           <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
           <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
         </button>
-        <button id="menuBtn" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white" aria-label="Toggle menu">
+        <button id="menuBtn" class="p-2 rounded-lg bg-white/5 text-white" aria-label="Toggle menu">
           <i data-lucide="menu" class="w-5 h-5 block" id="menuIcon"></i>
           <i data-lucide="x" class="w-5 h-5 hidden" id="closeIcon"></i>
         </button>
       </div>
     </div>
   </div>
-  <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
+  <div id="mobileMenu" class="hidden md:hidden border-t border-white/[0.06] bg-black/60 backdrop-blur-xl">
     <div class="px-6 py-5 space-y-3 text-center">
-      <a href="./index.html#info" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">Info</a>
-      <a href="./index.html#faq" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">FAQ</a>
-      <a href="./how-it-works.html" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">How it works</a>
-      <a href="./gallery.html" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">Gallery</a>
-      <a href="./form.html" class="flex items-center justify-center gap-2 bg-button text-white px-6 py-3 rounded-xl shadow-md font-medium text-sm mt-2">
+      <a href="./index.html#info" class="block text-white/60 hover:text-white py-1.5 text-sm transition-colors">Info</a>
+      <a href="./index.html#faq" class="block text-white/60 hover:text-white py-1.5 text-sm transition-colors">FAQ</a>
+      <a href="./how-it-works.html" class="block text-white/60 hover:text-white py-1.5 text-sm transition-colors">How it works</a>
+      <a href="./gallery.html" class="block text-white/60 hover:text-white py-1.5 text-sm transition-colors">Gallery</a>
+      <a href="./form.html" class="btn-primary flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-medium text-sm mt-2">
         <i data-lucide="package" class="w-4 h-4"></i>
         Request a Machine
       </a>
@@ -74,46 +265,76 @@
 </nav>
 
 <!-- 404 CONTENT -->
-<div class="flex items-center justify-center min-h-[calc(100vh-64px)] px-4 py-16 relative overflow-hidden">
-  <div class="absolute top-0 -left-20 w-72 h-72 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-3xl opacity-50"></div>
-  <div class="absolute bottom-0 -right-20 w-72 h-72 bg-indigo-100 dark:bg-indigo-900/20 rounded-full blur-3xl opacity-50"></div>
+<main class="relative z-10 flex items-center justify-center min-h-[calc(100vh-64px)] px-4 py-16">
+  <div class="max-w-xl w-full text-center">
+    <div class="flex flex-col items-center gap-6">
 
-  <div class="relative max-w-md w-full text-center bg-white dark:bg-gray-900 p-10 sm:p-14 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-800">
-    <div class="flex justify-center mb-6 text-blue-600 dark:text-blue-400">
-      <i data-lucide="file-x" class="w-14 h-14"></i>
+      <div class="fade-up">
+        <span class="status-pill">
+          <span class="status-dot"></span>
+          Error 404
+        </span>
+      </div>
+
+      <div class="fade-up">
+        <div class="glitch" data-text="404">404</div>
+      </div>
+
+      <div class="fade-up">
+        <h1 class="text-2xl sm:text-3xl font-bold text-white dark:text-white mb-3" style="font-family:'Syne',sans-serif;">
+          Page Not Found
+        </h1>
+        <p class="text-white/40 text-sm sm:text-base leading-relaxed max-w-sm mx-auto">
+          The page you're looking for may have been moved, renamed, or no longer exists.
+        </p>
+      </div>
+
+      <div class="fade-up w-full max-w-sm">
+        <div class="card-border rounded-2xl p-5 text-left">
+          <div class="flex items-center gap-2 mb-3">
+            <i data-lucide="terminal" class="w-3.5 h-3.5 text-blue-400 shrink-0"></i>
+            <span class="text-white/30 text-xs font-mono tracking-widest">TRACE</span>
+          </div>
+          <code class="text-xs font-mono leading-6 block">
+            <span class="text-white/25">→</span> <span class="text-blue-400">GET</span> <span class="text-white/60" id="badPath">/unknown</span><br>
+            <span class="text-white/25">→</span> <span class="text-red-400">404</span> <span class="text-white/40">route not matched</span><br>
+            <span class="text-white/25">→</span> <span class="text-white/30">redirected to</span> <span class="text-green-400">/404.html</span>
+          </code>
+        </div>
+      </div>
+
+      <div class="fade-up flex flex-col sm:flex-row gap-3 w-full max-w-sm">
+        <a href="/" class="btn-primary flex items-center justify-center gap-2 flex-1 px-6 py-3.5 rounded-xl font-semibold text-sm">
+          <i data-lucide="house" class="w-4 h-4 shrink-0"></i>
+          Go Home
+        </a>
+        <a href="./form.html" class="btn-ghost flex items-center justify-center gap-2 flex-1 px-6 py-3.5 rounded-xl font-semibold text-sm">
+          <i data-lucide="package" class="w-4 h-4 shrink-0"></i>
+          Request a Machine
+        </a>
+      </div>
+
+      <div class="fade-up">
+        <p class="text-white/20 text-xs">© 2026 Miami Service Amenities</p>
+      </div>
+
     </div>
-
-    <div class="text-6xl sm:text-7xl font-extrabold text-button mb-4" style="font-family:'Syne',sans-serif;">404</div>
-
-    <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Page Not Found</h1>
-
-    <p class="text-gray-500 dark:text-gray-400 text-sm sm:text-base mb-10">
-      The page you're looking for may have been moved, renamed, or no longer exists. Return home or request a vending machine below.
-    </p>
-
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="/" class="flex items-center justify-center gap-2 bg-button text-white px-7 py-3.5 rounded-xl font-semibold shadow-lg hover:bg-blue-700 transition-all duration-200 text-sm">
-        <i data-lucide="house" class="w-4 h-4 shrink-0"></i>
-        Go Home
-      </a>
-      <a href="./form.html" class="flex items-center justify-center gap-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 px-7 py-3.5 rounded-xl font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition text-sm">
-        <i data-lucide="package" class="w-4 h-4 shrink-0"></i>
-        Request a Machine
-      </a>
-    </div>
-
-    <p class="text-gray-400 dark:text-gray-600 mt-10 text-xs">© 2026 Miami Service Amenities</p>
   </div>
-</div>
+</main>
 
 <script>
   lucide.createIcons();
+
+  const badPath = document.getElementById('badPath');
+  if (badPath) badPath.textContent = window.location.pathname || '/unknown';
+
   const html = document.documentElement;
 
   const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   const menuIcon = document.getElementById('menuIcon');
   const closeIcon = document.getElementById('closeIcon');
+
   menuBtn.addEventListener('click', () => {
     const isHidden = mobileMenu.classList.toggle('hidden');
     menuIcon.classList.toggle('hidden', !isHidden);
@@ -121,10 +342,11 @@
   });
 
   function toggleDark() {
-    html.classList.toggle('dark');
-    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    const isDark = html.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
     lucide.createIcons();
   }
+
   document.getElementById('darkToggleDesktop').addEventListener('click', toggleDark);
   document.getElementById('darkToggleMobile').addEventListener('click', toggleDark);
 </script>
