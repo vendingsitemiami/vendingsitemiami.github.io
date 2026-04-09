@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Received — Miami Service Amenities</title>
+
+  <script>
+    if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: { button: '#2563eb' },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    .hero-title { font-family: 'Syne', sans-serif; font-weight: 800; }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    .check-pop {
+      opacity: 0;
+      transform: scale(0.6);
+      animation: checkPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      animation-delay: 0.1s;
+    }
+    @keyframes checkPop { to { opacity: 1; transform: scale(1); } }
+
+    .dark-toggle { transition: background 0.2s, transform 0.2s; }
+    .dark-toggle:hover { transform: scale(1.08); }
+  </style>
+</head>
+
+<body class="bg-white dark:bg-gray-950 min-h-screen flex flex-col transition-colors duration-300">
+
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-white/90 dark:bg-gray-950/90 backdrop-blur border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
+    <div class="flex items-center justify-between h-16 gap-4">
+      <a href="./index.html" class="text-sm sm:text-base lg:text-lg font-bold text-gray-800 dark:text-white truncate shrink-0">
+        Miami Service Amenities
+      </a>
+      <div class="hidden md:flex items-center gap-5 lg:gap-8 shrink-0">
+        <a href="./index.html#info" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">Info</a>
+        <a href="./index.html#faq" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">FAQ</a>
+        <a href="./how-it-works.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">How it works</a>
+        <a href="./gallery.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm transition-colors whitespace-nowrap">Gallery</a>
+        <button id="darkToggleDesktop" class="dark-toggle p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Toggle dark mode">
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+        </button>
+      </div>
+      <div class="flex md:hidden items-center gap-2 shrink-0">
+        <button id="darkToggleMobile" class="dark-toggle p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300" aria-label="Toggle dark mode">
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+        </button>
+        <button id="menuBtn" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white" aria-label="Toggle menu">
+          <i data-lucide="menu" class="w-5 h-5 block" id="menuIcon"></i>
+          <i data-lucide="x" class="w-5 h-5 hidden" id="closeIcon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
+    <div class="px-6 py-5 space-y-3 text-center">
+      <a href="./index.html#info" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">Info</a>
+      <a href="./index.html#faq" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">FAQ</a>
+      <a href="./how-it-works.html" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">How it works</a>
+      <a href="./gallery.html" class="block text-gray-700 dark:text-gray-300 py-1.5 text-sm">Gallery</a>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="flex-1 flex items-center justify-center px-4 sm:px-6 py-20">
+  <div class="max-w-lg w-full text-center">
+
+    <!-- ICON -->
+    <div class="check-pop flex items-center justify-center mx-auto mb-8 w-20 h-20 rounded-2xl bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-800">
+      <i data-lucide="circle-check" class="w-10 h-10 text-green-500"></i>
+    </div>
+
+    <!-- HEADING -->
+    <div class="fade-up" style="animation-delay:0.2s">
+      <h1 class="hero-title text-3xl sm:text-4xl text-gray-900 dark:text-white mb-3 leading-tight">Request received.</h1>
+      <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed max-w-sm mx-auto">
+        Thank you for reaching out. We will review your request and follow up within one business day to confirm your location and schedule a visit.
+      </p>
+    </div>
+
+    <!-- WHAT'S NEXT -->
+    <div class="fade-up mt-10 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 text-left shadow-md" style="animation-delay:0.35s">
+      <p class="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-4">What happens next</p>
+      <div class="space-y-4">
+        <div class="flex items-start gap-3">
+          <div class="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span class="text-xs font-bold text-blue-600 dark:text-blue-400">1</span>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-0.5">We review your request</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">Our team looks over your location and service details within one business day.</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span class="text-xs font-bold text-blue-600 dark:text-blue-400">2</span>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-0.5">We reach out to confirm</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">Expect a call or email to go over your space and schedule a site visit.</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span class="text-xs font-bold text-blue-600 dark:text-blue-400">3</span>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-0.5">Installation in days</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">We handle delivery, setup, and stocking. You do nothing.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="fade-up flex flex-col sm:flex-row gap-3 justify-center mt-8" style="animation-delay:0.5s">
+      <a href="./index.html" class="flex items-center justify-center gap-2 bg-button text-white px-7 py-3.5 rounded-xl font-semibold shadow-lg hover:bg-blue-700 hover:shadow-xl transition-all duration-200 text-sm">
+        <i data-lucide="home" class="w-4 h-4 shrink-0"></i>
+        Back to Home
+      </a>
+      <a href="tel:+13056150817" class="flex items-center justify-center gap-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 px-7 py-3.5 rounded-xl font-semibold hover:bg-gray-50 dark:hover:bg-gray-900 transition text-sm">
+        <i data-lucide="phone" class="w-4 h-4 shrink-0"></i>
+        (305) 615-0817
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-10">
+  <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-20 grid sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
+    <div>
+      <h3 class="font-bold mb-3 text-gray-900 dark:text-white">Miami Service Amenities</h3>
+      <p class="text-gray-500 dark:text-gray-400 text-sm">Providing free vending machines and mini markets across Miami.</p>
+    </div>
+    <div>
+      <h3 class="font-bold mb-3 text-gray-900 dark:text-white">Contact</h3>
+      <p class="flex items-center justify-center sm:justify-start gap-2 text-gray-500 dark:text-gray-400 text-sm mb-1">
+        <i data-lucide="phone" class="w-3.5 h-3.5 shrink-0"></i>(305) 615-0817
+      </p>
+      <p class="flex items-center justify-center sm:justify-start gap-2 text-gray-500 dark:text-gray-400 text-sm">
+        <i data-lucide="mail" class="w-3.5 h-3.5 shrink-0"></i>info@serviceamenities.com
+      </p>
+    </div>
+    <div class="sm:col-span-2 md:col-span-1">
+      <h3 class="font-bold mb-3 text-gray-900 dark:text-white">Links</h3>
+      <p class="mb-1"><a href="./how-it-works.html" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors">How it works</a></p>
+      <p><a href="./gallery.html" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors">Gallery</a></p>
+    </div>
+  </div>
+  <div class="text-center text-gray-400 dark:text-gray-600 mt-10 text-xs">
+    © 2026 Miami Service Amenities
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+
+  const html = document.documentElement;
+
+  if (localStorage.getItem('theme') === 'dark') {
+    html.classList.add('dark');
+  } else {
+    html.classList.remove('dark');
+  }
+
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuIcon = document.getElementById('menuIcon');
+  const closeIcon = document.getElementById('closeIcon');
+
+  menuBtn.addEventListener('click', () => {
+    const isHidden = mobileMenu.classList.toggle('hidden');
+    menuIcon.classList.toggle('hidden', !isHidden);
+    closeIcon.classList.toggle('hidden', isHidden);
+  });
+
+  function toggleDark() {
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    lucide.createIcons();
+  }
+
+  document.getElementById('darkToggleDesktop').addEventListener('click', toggleDark);
+  document.getElementById('darkToggleMobile').addEventListener('click', toggleDark);
+</script>
+
+</body>
+</html>
