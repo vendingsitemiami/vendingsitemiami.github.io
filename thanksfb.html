@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You — Miami Service Amenities</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    .hero-title { font-family: 'Syne', sans-serif; font-weight: 800; }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    .check-pop {
+      opacity: 0;
+      transform: scale(0.6);
+      animation: checkPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      animation-delay: 0.1s;
+    }
+    @keyframes checkPop { to { opacity: 1; transform: scale(1); } }
+  </style>
+</head>
+
+<body class="bg-gray-950 min-h-screen flex items-center justify-center px-4">
+
+  <div class="text-center max-w-sm w-full">
+
+    <div class="check-pop flex items-center justify-center mx-auto mb-8 w-20 h-20 rounded-2xl bg-green-950 border border-green-800">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </div>
+
+    <h1 class="fade-up hero-title text-3xl sm:text-4xl text-white mb-4 leading-tight" style="animation-delay:0.2s">Feedback received.</h1>
+    <p class="fade-up text-gray-400 text-sm leading-relaxed" style="animation-delay:0.35s">Thanks for your feedback.</p>
+
+  </div>
+
+  <script>
+    document.documentElement.classList.add('dark');
+  </script>
+
+</body>
+</html>

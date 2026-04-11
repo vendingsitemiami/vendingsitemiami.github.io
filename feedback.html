@@ -30,9 +30,6 @@
     }
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-    .dark-toggle { transition: background 0.2s, transform 0.2s; }
-    .dark-toggle:hover { transform: scale(1.08); }
-
     input, textarea {
       transition: border-color 0.15s, box-shadow 0.15s;
     }
@@ -70,26 +67,23 @@
 
 <body class="bg-white dark:bg-gray-950 min-h-screen transition-colors duration-300">
 
-<!-- PAGE -->
 <main class="py-14 md:py-20 px-4 sm:px-6">
   <div class="max-w-xl mx-auto">
 
-    <!-- HEADER -->
     <div class="mb-10 fade-up" style="animation-delay:0.05s">
       <h1 class="hero-title text-3xl sm:text-4xl text-gray-900 dark:text-white mb-3 leading-tight">Vending Feedback</h1>
       <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Have a product request or something to share about one of our machines? We read every submission.</p>
     </div>
 
-    <!-- FORM CARD -->
     <div class="fade-up bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl shadow-lg overflow-hidden" style="animation-delay:0.2s">
-      <form id="feedbackForm" action="https://formsubmit.co/info@serviceamenities.com" method="POST">
+      <form id="feedbackForm" action="https://formsubmit.co/7f73fe330869212b4770443576908bd8" method="POST">
         <input type="hidden" name="_subject" value="VMF">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://serviceamenities.com/thanksfb.html">
 
         <div class="p-6 sm:p-8 space-y-6">
 
-          <!-- LOCATION -->
           <div>
             <label class="field-label text-gray-500 dark:text-gray-400" for="location">Machine Location <span class="text-red-500">*</span></label>
             <input
@@ -102,7 +96,6 @@
             >
           </div>
 
-          <!-- PRODUCT REQUEST CHECKBOX + TOGGLED INPUT -->
           <div class="space-y-3">
             <label class="flex items-center gap-3 cursor-pointer select-none group">
               <div class="relative">
@@ -120,7 +113,6 @@
                 <div class="pt-1">
                   <input
                     id="productRequest"
-                    name="product_request"
                     type="text"
                     placeholder="e.g. Celsius Energy Drink, Takis Fuego"
                     class="w-full bg-gray-50 dark:bg-gray-950 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600"
@@ -130,7 +122,6 @@
             </div>
           </div>
 
-          <!-- FEEDBACK -->
           <div>
             <label class="field-label text-gray-500 dark:text-gray-400" for="feedback">
               Feedback <span class="text-gray-300 dark:text-gray-600 font-normal normal-case tracking-normal">optional</span>
@@ -146,40 +137,31 @@
 
         </div>
 
-        <!-- FOOTER -->
         <div class="border-t border-gray-100 dark:border-gray-800 px-6 sm:px-8 py-5 bg-gray-50 dark:bg-gray-950 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p class="text-xs text-gray-400 dark:text-gray-500 flex items-center gap-1.5">
             <i data-lucide="lock" class="w-3.5 h-3.5 shrink-0"></i>
             Your information is kept private and never shared.
           </p>
-          <div class="flex flex-col items-end gap-2 w-full sm:w-auto">
-            <p id="formError" class="hidden text-xs text-red-500 flex items-center gap-1.5">
-              <i data-lucide="alert-circle" class="w-3.5 h-3.5 shrink-0"></i>
-              Something went wrong. Please try again later.
-            </p>
-            <button
-              type="submit"
-              id="submitBtn"
-              class="w-full sm:w-auto flex items-center justify-center gap-2 bg-button text-white px-7 py-3 rounded-xl font-semibold shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-200 text-sm"
-            >
-              <i data-lucide="send" class="w-4 h-4 shrink-0"></i>
-              Send Feedback
-            </button>
-          </div>
+          <button
+            type="submit"
+            id="submitBtn"
+            class="w-full sm:w-auto flex items-center justify-center gap-2 bg-button text-white px-7 py-3 rounded-xl font-semibold shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-200 text-sm"
+          >
+            <i data-lucide="send" class="w-4 h-4 shrink-0"></i>
+            Send Feedback
+          </button>
         </div>
 
       </form>
     </div>
 
-    <!-- CONTACT ALT -->
   </div>
 </main>
 
 <script>
   lucide.createIcons();
 
-  const html = document.documentElement;
-  html.classList.add('dark');
+  document.documentElement.classList.add('dark');
 
   const checkbox = document.getElementById('productRequestCheck');
   const checkIcon = document.getElementById('checkIcon');
@@ -198,31 +180,8 @@
     }
   });
 
-  document.getElementById('feedbackForm').addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    btn.disabled = true;
-    btn.innerHTML = '<svg class="animate-spin w-4 h-4 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path></svg> Sending...';
-    try {
-      const res = await fetch(this.action, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(this),
-      });
-      const data = await res.json();
-      if (data.success === 'true' || data.success === true) {
-        const dest = window.location.hostname === 'market.serviceamenities.com'
-          ? 'https://market.serviceamenities.com/thanks.html'
-          : 'https://serviceamenities.com/thanks.html';
-        window.location.href = dest;
-      } else {
-        throw new Error('failed');
-      }
-    } catch {
-      btn.disabled = false;
-      btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Feedback';
-      document.getElementById('formError').classList.remove('hidden');
-    }
+  document.getElementById('submitBtn').addEventListener('click', () => {
+    document.getElementById('submitBtn').innerHTML = '<svg class="animate-spin w-4 h-4 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path></svg> Sending...';
   });
 </script>
 
