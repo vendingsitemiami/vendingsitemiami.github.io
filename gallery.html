@@ -10,7 +10,7 @@
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -18,7 +18,7 @@
     };
   </script>
   <style>
-    body { font-family: system-ui, sans-serif; }
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
     .dark-toggle { transition: background 0.2s, transform 0.2s; }
     .dark-toggle:hover { transform: scale(1.08); }
     .img-card { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
@@ -93,7 +93,41 @@
 <section class="pb-20 px-4 sm:px-6 lg:px-20">
   <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
     <div class="img-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-gray-800">
-      <img src="./g/gallery10.jpg" class="w-full aspect-square object-cover" alt="Installation 5">
+      <img src="./g/1.png" class="w-full aspect-square object-cover" alt="Installation 1" loading="lazy">
+    </div>
+    <div class="img-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-gray-800">
+      <img src="./g/2.png" class="w-full aspect-square object-cover" alt="Installation 2" loading="lazy">
+    </div>
+    <div class="img-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-gray-800">
+      <img src="./g/3.png" class="w-full aspect-square object-cover" alt="Installation 3" loading="lazy">
+    </div>
+    <div class="img-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-gray-800">
+      <img src="./g/7.png" class="w-full aspect-square object-cover" alt="Installation 4" loading="lazy">
+    </div>
+    <div class="img-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-gray-800">
+      <img src="./g/5.png" class="w-full aspect-square object-cover" alt="Installation 5" loading="lazy">
+    </div>
+    <div class="img-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-gray-800">
+      <img src="./g/6.png" class="w-full aspect-square object-cover" alt="Installation 6" loading="lazy">
+    </div>
+    <div class="img-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-gray-800">
+      <img src="./g/4.png" class="w-full aspect-square object-cover" alt="Installation 7" loading="lazy">
+    </div>
+    <div class="img-card relative aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-gray-800">
+      <img src="./g/8.png" class="absolute top-0 left-1/2 h-full w-auto max-w-none -translate-x-[73%]" alt="Installation 8" loading="lazy">
+      <img src="./g/8.png" class="absolute top-0 left-1/2 h-full w-auto max-w-none translate-x-[27%]" alt="" aria-hidden="true" loading="lazy">
+    </div>
+    <div class="img-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-gray-800">
+      <img src="./g/9.png" class="w-full aspect-square object-cover" alt="Installation 9" loading="lazy">
+    </div>
+    <div class="img-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-gray-800">
+      <img src="./g/10.png" class="w-full aspect-square object-cover" alt="Installation 10" loading="lazy">
+    </div>
+    <div class="img-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-gray-800">
+      <img src="./g/11.png" class="w-full aspect-square object-cover" alt="Installation 11" loading="lazy">
+    </div>
+    <div class="img-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-gray-800">
+      <img src="./g/12.png" class="w-full aspect-square object-cover" alt="Installation 12" loading="lazy">
     </div>
   </div>
 </section>
@@ -148,8 +182,7 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1 });
-  document.querySelectorAll('.img-card').forEach((el, i) => {
-    el.style.transitionDelay = `${i * 0.08}s`;
+  document.querySelectorAll('.img-card').forEach((el) => {
     observer.observe(el);
   });
 </script>
