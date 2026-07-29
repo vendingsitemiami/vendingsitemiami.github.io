@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+  else document.documentElement.classList.remove('dark');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessibility | Service Amenities</title>
+<meta name="description" content="Accessibility statement for Service Amenities vending and micro market services.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: { button: '#2563eb' },
+      },
+    },
+  };
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+  .hero-title-sans { font-family: 'Syne', sans-serif; font-weight: 800; }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+  .scroll-fade { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+  .scroll-fade.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-white overflow-x-hidden transition-colors duration-300">
+
+<div class="max-w-3xl mx-auto px-4 sm:px-6 pt-6">
+  <button onclick="history.back()" class="inline-flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm font-semibold transition-colors">
+    <i data-lucide="arrow-left" class="w-4 h-4 shrink-0"></i>
+    Back
+  </button>
+</div>
+
+<section class="pt-8 pb-8 md:pt-10 md:pb-10">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
+    <h1 class="hero-title-sans text-gray-900 dark:text-white mb-4" style="font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1;">
+      Accessibility Statement
+    </h1>
+    <p class="fade-up text-gray-500 dark:text-gray-400 text-sm" style="animation-delay:0.15s">
+      Last updated July 29, 2026
+    </p>
+  </div>
+</section>
+
+<section class="pb-16 md:pb-24 border-t border-gray-100 dark:border-gray-800">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-12 space-y-10">
+
+    <div class="scroll-fade">
+      <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3">1. Our Commitment</h2>
+      <div class="text-gray-500 dark:text-gray-400 text-sm sm:text-base leading-relaxed space-y-3">
+        <p>Service Amenities is committed to making serviceamenities.com and market.serviceamenities.com accessible to everyone, including people with disabilities. We believe access to information about our vending and micro market services should not depend on the technology or ability of the person browsing.</p>
+      </div>
+    </div>
+
+    <div class="scroll-fade">
+      <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3">2. Conformance Standard</h2>
+      <div class="text-gray-500 dark:text-gray-400 text-sm sm:text-base leading-relaxed space-y-3">
+        <p>We aim to meet the Web Content Accessibility Guidelines (WCAG) 2.1, Level AA, published by the World Wide Web Consortium (W3C). These guidelines explain how to make web content more accessible for people with a wide range of disabilities.</p>
+      </div>
+    </div>
+
+    <div class="scroll-fade">
+      <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3">3. Measures We Take</h2>
+      <div class="text-gray-500 dark:text-gray-400 text-sm sm:text-base leading-relaxed space-y-3">
+        <p>Steps we take to support accessibility on our website include:</p>
+        <div class="grid sm:grid-cols-2 gap-4 pt-2">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-blue-600 dark:text-blue-400"></i>
+            </div>
+            <div class="text-sm text-gray-500 dark:text-gray-400">Sufficient color contrast between text and background in both light and dark mode.</div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-blue-600 dark:text-blue-400"></i>
+            </div>
+            <div class="text-sm text-gray-500 dark:text-gray-400">Descriptive labels on interactive controls, including navigation and back buttons.</div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-blue-600 dark:text-blue-400"></i>
+            </div>
+            <div class="text-sm text-gray-500 dark:text-gray-400">Semantic HTML structure with clear headings to support screen reader navigation.</div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-blue-600 dark:text-blue-400"></i>
+            </div>
+            <div class="text-sm text-gray-500 dark:text-gray-400">A responsive, mobile-safe layout that supports browser zoom and text resizing.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-fade">
+      <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3">4. Known Limitations</h2>
+      <div class="text-gray-500 dark:text-gray-400 text-sm sm:text-base leading-relaxed space-y-3">
+        <p>Despite our efforts, some parts of our website may not yet be fully accessible. Known limitations may include third-party embedded content or forms that have not been fully tested against WCAG 2.1 AA. We are working to identify and address these issues over time.</p>
+      </div>
+    </div>
+
+    <div class="scroll-fade">
+      <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3">5. Third-Party Content</h2>
+      <div class="text-gray-500 dark:text-gray-400 text-sm sm:text-base leading-relaxed space-y-3">
+        <p>Our website relies on some third-party tools, such as our form processing provider. While we select vendors that support accessibility, we do not directly control the accessibility of their interfaces.</p>
+      </div>
+    </div>
+
+    <div class="scroll-fade">
+      <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3">6. Feedback</h2>
+      <div class="text-gray-500 dark:text-gray-400 text-sm sm:text-base leading-relaxed space-y-3">
+        <p>We welcome your feedback on the accessibility of serviceamenities.com and market.serviceamenities.com. If you encounter an accessibility barrier or have suggestions for improvement, please let us know:</p>
+        <div class="bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-5 space-y-2 not-italic">
+          <div class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0"></i><a href="mailto:info@serviceamenities.com" class="text-blue-600 dark:text-blue-400 hover:underline">info@serviceamenities.com</a></div>
+          <div class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0"></i><a href="tel:+13056150817" class="hover:text-gray-900 dark:hover:text-white">(305) 615-0817</a></div>
+        </div>
+        <p>We try to respond to accessibility feedback within a reasonable timeframe and, where possible, provide the information you need in an alternative format.</p>
+      </div>
+    </div>
+
+    <div class="scroll-fade">
+      <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3">7. Ongoing Efforts</h2>
+      <div class="text-gray-500 dark:text-gray-400 text-sm sm:text-base leading-relaxed space-y-3">
+        <p>Accessibility is an ongoing effort. As we update our website and add new features, we review them for accessibility and welcome continued feedback to help us improve.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12">
+  <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-20 grid sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
+    <div>
+      <div class="text-base font-bold text-gray-800 dark:text-white mb-2">Miami Service Amenities</div>
+      <p class="text-gray-500 dark:text-gray-400 text-sm">Vending and micro market solutions for Miami workplaces.</p>
+    </div>
+    <div class="flex flex-col items-center sm:items-start gap-2">
+      <a href="tel:+13056150817" class="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm">
+        <i data-lucide="phone" class="w-3.5 h-3.5 shrink-0"></i> (305) 615-0817
+      </a>
+      <a href="mailto:info@serviceamenities.com" class="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm">
+        <i data-lucide="mail" class="w-3.5 h-3.5 shrink-0"></i> info@serviceamenities.com
+      </a>
+    </div>
+    <div class="flex flex-col items-center sm:items-start gap-2 sm:col-span-2 md:col-span-1">
+      <a href="./index.html" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm">Home</a>
+      <a href="./terms-of-service.html" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm">Terms of Service</a>
+      <a href="./privacy-policy.html" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm">Privacy Policy</a>
+      <a href="./accessibility.html" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm">Accessibility</a>
+    </div>
+  </div>
+  <div class="text-center text-gray-400 dark:text-gray-600 mt-10 text-xs">
+    © 2026 Miami Service Amenities
+  </div>
+</footer>
+
+<script>
+  const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.scroll-fade').forEach(el => scrollObserver.observe(el));
+
+  lucide.createIcons();
+</script>
+</body>
+</html>
