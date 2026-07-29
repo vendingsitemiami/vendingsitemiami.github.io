@@ -22,49 +22,6 @@
     *, *::before, *::after { box-sizing: border-box; }
     body { font-family: 'DM Sans', sans-serif; }
 
-    .glitch {
-      position: relative;
-      font-family: 'Syne', sans-serif;
-      font-weight: 900;
-      font-size: clamp(7rem, 22vw, 14rem);
-      line-height: 1;
-      color: #fff;
-      letter-spacing: -0.04em;
-      user-select: none;
-    }
-    .glitch::before, .glitch::after {
-      content: attr(data-text);
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-    }
-    .glitch::before {
-      color: #86efac;
-      animation: glitch-top 3.5s infinite linear;
-      clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
-      transform: translateX(-3px);
-    }
-    .glitch::after {
-      color: #16a34a;
-      animation: glitch-bot 3.5s infinite linear;
-      clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
-      transform: translateX(3px);
-    }
-    @keyframes glitch-top {
-      0%, 89%   { transform: translateX(-3px); opacity: 1; }
-      90%       { transform: translateX(4px) skewX(5deg); opacity: 0.8; }
-      91%       { transform: translateX(-6px); }
-      92%       { transform: translateX(0); opacity: 1; }
-      100%      { transform: translateX(-3px); }
-    }
-    @keyframes glitch-bot {
-      0%, 85%   { transform: translateX(3px); opacity: 1; }
-      86%       { transform: translateX(-5px) skewX(-4deg); opacity: 0.8; }
-      87%       { transform: translateX(7px); }
-      89%       { transform: translateX(0); opacity: 1; }
-      100%      { transform: translateX(3px); }
-    }
-
     .scanlines {
       pointer-events: none;
       position: fixed;
@@ -115,16 +72,6 @@
       z-index: 0;
     }
 
-    .card-border {
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(10,10,18,0.75);
-      backdrop-filter: blur(20px);
-    }
-    html:not(.dark) .card-border {
-      border: 1px solid rgba(0,0,0,0.08);
-      background: rgba(255,255,255,0.85);
-    }
-
     .btn-primary {
       background: #2563eb;
       color: #fff;
@@ -153,46 +100,11 @@
     }
     html:not(.dark) .btn-ghost:hover { border-color: rgba(0,0,0,0.3); color: #0f172a; }
 
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 12px;
-      border-radius: 999px;
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      background: rgba(239,68,68,0.12);
-      border: 1px solid rgba(239,68,68,0.25);
-      color: #f87171;
-    }
-    html:not(.dark) .status-pill { background: rgba(220,38,38,0.08); border-color: rgba(220,38,38,0.2); color: #dc2626; }
-
-    .status-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #f87171;
-      animation: pulse-dot 1.8s ease-in-out infinite;
-    }
-    html:not(.dark) .status-dot { background: #dc2626; }
-
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.7); }
-    }
-
     .fade-up {
       opacity: 0;
       transform: translateY(20px);
       animation: fadeUp 0.55s ease forwards;
     }
-    .fade-up:nth-child(1) { animation-delay: 0.05s; }
-    .fade-up:nth-child(2) { animation-delay: 0.15s; }
-    .fade-up:nth-child(3) { animation-delay: 0.25s; }
-    .fade-up:nth-child(4) { animation-delay: 0.35s; }
-    .fade-up:nth-child(5) { animation-delay: 0.45s; }
-    .fade-up:nth-child(6) { animation-delay: 0.55s; }
     @keyframes fadeUp {
       to { opacity: 1; transform: translateY(0); }
     }
@@ -202,11 +114,6 @@
 
     html.dark body { background: #030712; }
     html:not(.dark) body { background: #f8fafc; }
-    html:not(.dark) .glitch { color: #0f172a; }
-    html:not(.dark) .glitch::before { color: #86efac; }
-    html:not(.dark) .glitch::after  { color: #16a34a; }
-    html:not(.dark) .glow-blue { background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%); }
-    html:not(.dark) .glow-red  { background: radial-gradient(circle, rgba(239,68,68,0.06) 0%, transparent 70%); }
   </style>
 </head>
 
@@ -221,7 +128,7 @@
 <nav class="relative z-50 border-b border-white/[0.06] dark:border-white/[0.06] bg-black/40 dark:bg-black/40 backdrop-blur-xl">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
     <div class="flex items-center justify-between h-16 gap-4">
-      <a href="/" class="text-sm sm:text-base font-bold text-white truncate shrink-0 tracking-tight" style="font-family:'Syne',sans-serif;">
+      <a href="/" class="text-sm sm:text-base font-bold text-white truncate shrink-0 tracking-tight">
         Miami Service Amenities
       </a>
       <div class="hidden md:flex items-center gap-6 lg:gap-8 shrink-0">
@@ -269,18 +176,13 @@
   <div class="max-w-xl w-full text-center">
     <div class="flex flex-col items-center gap-6">
 
-      <div class="fade-up">
-        <span class="status-pill">
-          <span class="status-dot"></span>
-          Error 404
-        </span>
+      <div class="fade-up" style="animation-delay:0.05s">
+        <div class="text-[#0f172a] dark:text-white" style="font-family:'Syne',sans-serif; font-weight:900; font-size:clamp(7rem,22vw,14rem); line-height:1; letter-spacing:-0.04em;">
+          404
+        </div>
       </div>
 
-      <div class="fade-up">
-        <div class="glitch" data-text="404">404</div>
-      </div>
-
-      <div class="fade-up">
+      <div class="fade-up" style="animation-delay:0.2s">
         <h1 class="text-2xl sm:text-3xl font-bold text-white dark:text-white mb-3" style="font-family:'Syne',sans-serif;">
           Page Not Found
         </h1>
@@ -289,21 +191,7 @@
         </p>
       </div>
 
-      <div class="fade-up w-full max-w-sm">
-        <div class="card-border rounded-2xl p-5 text-left">
-          <div class="flex items-center gap-2 mb-3">
-            <i data-lucide="terminal" class="w-3.5 h-3.5 text-blue-400 shrink-0"></i>
-            <span class="text-white/30 text-xs font-mono tracking-widest">TRACE</span>
-          </div>
-          <code class="text-xs font-mono leading-6 block">
-            <span class="text-white/25">→</span> <span class="text-blue-400">GET</span> <span class="text-white/60" id="badPath">/unknown</span><br>
-            <span class="text-white/25">→</span> <span class="text-red-400">404</span> <span class="text-white/40">route not matched</span><br>
-            <span class="text-white/25">→</span> <span class="text-white/30">redirected to</span> <span class="text-green-400">/404.html</span>
-          </code>
-        </div>
-      </div>
-
-      <div class="fade-up flex flex-col sm:flex-row gap-3 w-full max-w-sm">
+      <div class="fade-up flex flex-col sm:flex-row gap-3 w-full max-w-sm" style="animation-delay:0.35s">
         <a href="/" class="btn-primary flex items-center justify-center gap-2 flex-1 px-6 py-3.5 rounded-xl font-semibold text-sm">
           <i data-lucide="house" class="w-4 h-4 shrink-0"></i>
           Go Home
@@ -314,7 +202,7 @@
         </a>
       </div>
 
-      <div class="fade-up">
+      <div class="fade-up" style="animation-delay:0.5s">
         <p class="text-white/20 text-xs">© 2026 Miami Service Amenities</p>
       </div>
 
@@ -324,9 +212,6 @@
 
 <script>
   lucide.createIcons();
-
-  const badPath = document.getElementById('badPath');
-  if (badPath) badPath.textContent = window.location.pathname || '/unknown';
 
   const html = document.documentElement;
 
