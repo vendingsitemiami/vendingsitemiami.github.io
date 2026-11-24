@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Request a Machine — Miami Service Amenities</title>
-  <meta name="description" content="Request a free vending machine or mini market for your business in Miami.">
+  <meta name="description" content="Request a free vending machine, coffee machine, or mini market for your business in Miami.">
 
   <script>
     if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
@@ -251,6 +251,13 @@
                   <div class="text-xs text-gray-400 dark:text-gray-500">Shelves and iPad self-checkout</div>
                 </div>
               </label>
+              <label class="sm:col-span-2 service-option flex items-center gap-3 bg-gray-50 dark:bg-gray-950 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3.5 cursor-pointer hover:border-blue-400 dark:hover:border-blue-500 transition-colors has-[:checked]:border-blue-600 has-[:checked]:bg-blue-50 dark:has-[:checked]:bg-blue-950/40 dark:has-[:checked]:border-blue-500">
+                <input type="radio" name="service_type" value="Coffee Machine" class="accent-blue-600 w-4 h-4 shrink-0">
+                <div>
+                  <div class="text-sm font-semibold text-gray-800 dark:text-gray-200">Coffee Machine</div>
+                  <div class="text-xs text-gray-400 dark:text-gray-500">Fresh bean-to-cup espresso</div>
+                </div>
+              </label>
             </div>
           </div>
 
@@ -395,6 +402,11 @@
 
   emailInput.addEventListener('input', checkPreferred);
   phoneInput.addEventListener('input', checkPreferred);
+
+  if (new URLSearchParams(window.location.search).get('service') === 'coffee') {
+    const coffeeOption = document.querySelector('input[name="service_type"][value="Coffee Machine"]');
+    if (coffeeOption) coffeeOption.checked = true;
+  }
 
   document.getElementById('requestForm').addEventListener('submit', function () {
     const btn = document.getElementById('submitBtn');

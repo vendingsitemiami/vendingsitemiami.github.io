@@ -11,7 +11,7 @@
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -19,7 +19,7 @@
     };
   </script>
   <style>
-    body { font-family: system-ui, sans-serif; }
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
     .dark-toggle { transition: background 0.2s, transform 0.2s; }
     .dark-toggle:hover { transform: scale(1.08); }
     .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -46,10 +46,22 @@
           <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
           <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
         </button>
-        <a href="./form.html" class="flex items-center gap-2 bg-button text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition shadow-md text-sm font-medium whitespace-nowrap">
-          <i data-lucide="package" class="w-4 h-4 shrink-0"></i>
-          Request a Machine
-        </a>
+        <div class="relative group">
+          <a href="./form.html" class="flex items-center gap-2 bg-button text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition shadow-md text-sm font-medium whitespace-nowrap">
+            <i data-lucide="package" class="w-4 h-4 shrink-0"></i>
+            Request a Machine
+          </a>
+          <div class="absolute right-0 top-full z-50 w-max pt-2 flex flex-col items-stretch gap-2 opacity-0 invisible translate-y-1 transition-all duration-150 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0">
+            <a href="./coffee.html" class="flex items-center gap-2 bg-gray-800 text-white px-4 py-2 rounded-xl hover:bg-gray-700 transition shadow-md text-sm font-medium whitespace-nowrap">
+              <i data-lucide="coffee" class="w-4 h-4 shrink-0"></i>
+              Request a Coffee Machine
+            </a>
+            <a href="https://market.serviceamenities.com" class="flex items-center gap-2 bg-gray-800 text-white px-4 py-2 rounded-xl hover:bg-gray-700 transition shadow-md text-sm font-medium whitespace-nowrap">
+              <i data-lucide="store" class="w-4 h-4 shrink-0"></i>
+              Request a Market
+            </a>
+          </div>
+        </div>
       </div>
       <div class="flex md:hidden items-center gap-2 shrink-0">
         <button id="darkToggleMobile" class="dark-toggle p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300" aria-label="Toggle dark mode">
@@ -73,6 +85,14 @@
       <a href="./form.html" class="flex items-center justify-center gap-2 bg-button text-white px-6 py-3 rounded-xl shadow-md font-medium text-sm mt-2">
         <i data-lucide="package" class="w-4 h-4"></i>
         Request a Machine
+      </a>
+      <a href="./coffee.html" class="flex items-center justify-center gap-2 bg-gray-800 text-white px-6 py-3 rounded-xl shadow-md font-medium text-sm">
+        <i data-lucide="coffee" class="w-4 h-4"></i>
+        Request a Coffee Machine
+      </a>
+      <a href="https://market.serviceamenities.com" class="flex items-center justify-center gap-2 bg-gray-800 text-white px-6 py-3 rounded-xl shadow-md font-medium text-sm">
+        <i data-lucide="store" class="w-4 h-4"></i>
+        Request a Market
       </a>
     </div>
   </div>
